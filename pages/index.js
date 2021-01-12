@@ -1,39 +1,20 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-import Image from 'next/image';
-
 import Layout from 'components/layouts/Layout';
-import Container from 'components/atoms/Container';
-import Grid from 'components/atoms/Grid';
-import Box from 'components/atoms/Box';
 
-import homeMenu from 'constans/homeMenu';
-
-const Tile = styled(Box)`
-  padding: 10px;
-  img {
-    object-fit: contain;
-  }
-
-  @media(min-width: 768px) {
-    padding: 15px;
-  }
-`;
-
-const Home = () => (
+const Home = ({posts}) => (
   <Layout>
-    <Container space flex>
-      <Grid s={1} m={2}>
-      {homeMenu.map(({ text, link, logo }) => (
-        <Tile key={text}>
-          <Link href={`/gry/${link}`}>
-            <a><Image src={logo} width={300} height={100} quality={100} alt={text} /></a>
-          </Link>
-        </Tile>
-      ))}
-      </Grid>
-    </Container>
+    <div>{posts.map(post => <h2>{post.title.rendered}</h2>)}</div>
   </Layout>
 );
+
+export async function getServerSideProps() {
+  const API_URL = process.env.WORDPRESS_API_URL
+  
+  const res = await fetch(`${API_URL}posts`);
+  const data = await res.json();
+
+  return {
+    props: { posts: data }
+  }
+};
 
 export default Home;
