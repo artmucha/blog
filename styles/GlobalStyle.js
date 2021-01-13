@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     font-family: 'Kumbh Sans', sans-serif;
     color: #1a1a1a;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
   }
 
   ul {

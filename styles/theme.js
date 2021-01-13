@@ -9,8 +9,17 @@ export const theme = {
   regular: 400,
   bold: 700,
 
+  light: {
+    text: '#1a1a1a',
+    background: '#ffffff'
+  },
+
+  dark: {
+    text: '#f5f5f5',
+    background: '#323232'
+  },
+
   fontSize: {
-    xxs: '1rem',
     xs: '1.2rem',
     s: '1.4rem',
     m: '1.8rem',

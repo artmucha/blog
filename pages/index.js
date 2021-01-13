@@ -9,7 +9,7 @@ const Home = ({posts}) => (
 export async function getServerSideProps() {
   const API_URL = process.env.WORDPRESS_API_URL
   
-  const res = await fetch(`${API_URL}posts`);
+  const res = await fetch(`${API_URL}/posts`);
   const data = await res.json();
 
   return {

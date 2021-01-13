@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
-import Link from 'next/link';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import menu from 'constans/menu';
+import Container from 'components/atoms/Container';
+import MainNavigation from 'components/molecules/MainNavigation';
 
 const Header = styled.header`
   background-color: ${({ theme }) => theme.white};
   color: ${({ theme }) => theme.black};
   padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 11px 10px -10px rgba(0,0,0,.1);
+  box-shadow: 0px 6px 8px 0px rgba(0,0,0,.08);
 `;
 
 const Footer = styled.footer`
@@ -28,36 +27,6 @@ const Footer = styled.footer`
   @media(min-width: 768px) {
     margin-top: 40px;
     text-align: left;
-  }
-`;
-
-const NavigationList = styled.ul`
-
-  a {
-    display: inline-block;
-    color: inherit;
-  }
-
-  a:hover {
-    color: ${({ theme }) => theme.white};
-  }
-`;
-
-const NavigationHeading = styled.h4`
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    line-height: 1.7;
-    font-weight: ${({ theme }) => theme.regular};
-    font-size: ${({ theme }) => theme.fontSize.s};
-    color: ${({ theme }) => theme.white};
-`;
-
-const Copyright = styled.p`
-  padding-top: 20px;
-  text-align: center;
-
-  a {
-    color: inherit;
   }
 `;
 
@@ -92,7 +61,12 @@ const Layout = ({ children, title = 'Blog'}) => {
       </Head>
 
 			<Header>
-				Header
+        <Container>
+          <h1>Planeta Geeka</h1>
+        </Container>
+        <Container flex alignCenter spaceBetween>
+          <MainNavigation />
+        </Container>
 			</Header>
 
 			{children}
