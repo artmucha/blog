@@ -5,12 +5,41 @@ import styled from 'styled-components';
 
 import Container from 'components/atoms/Container';
 import MainNavigation from 'components/molecules/MainNavigation';
+import SearchForm from 'components/molecules/SearchForm';
+
+import MenuIcon from '../../public/icons/menu-icon.svg';
+import SearchIcon from '../../public/icons/search-icon.svg';
 
 const Header = styled.header`
-  background-color: ${({ theme }) => theme.white};
-  color: ${({ theme }) => theme.black};
-  padding-top: 10px;
+  background-color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.white};
+  padding-top: 15px;
+  padding-bottom: 15px;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,.08);
+
+  @media(min-width: 992px) {
+    padding-bottom: 0;
+    background-color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.black};
+  }
+`;
+
+const MenuButton = styled(MenuIcon)`
+  fill: ${({ theme }) => theme.white};
+  cursor: pointer;
+
+  @media(min-width: 992px) {
+    display: none;
+  }
+`;
+
+const SearchButton = styled(SearchIcon)`
+  fill: ${({ theme }) => theme.white};
+  cursor: pointer;
+
+  @media(min-width: 992px) {
+    fill: ${({ theme }) => theme.black};
+  }
 `;
 
 const Footer = styled.footer`
@@ -25,13 +54,15 @@ const Footer = styled.footer`
   text-align: center;
 
   @media(min-width: 768px) {
-    margin-top: 40px;
+    margin-top: 48px;
     text-align: left;
   }
 `;
 
 const Layout = ({ children, title = 'Blog'}) => {
-	const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 	
 	const startLoading = () => setLoading(true);
 	const stopLoading = () => setLoading(false);
@@ -61,11 +92,15 @@ const Layout = ({ children, title = 'Blog'}) => {
       </Head>
 
 			<Header>
-        <Container>
+        <Container flex spaceBetween>
+          <MenuButton onClick={() => setOpen(!open)} />
           <h1>Planeta Geeka</h1>
+          <SearchButton onClick={() => setShowSearch(!showSearch)} >
+          </SearchButton>
+          <SearchForm showSearch={showSearch} setShowSearch={setShowSearch} />
         </Container>
         <Container flex alignCenter spaceBetween>
-          <MainNavigation />
+          <MainNavigation open={open} setOpen={setOpen} />
         </Container>
 			</Header>
 

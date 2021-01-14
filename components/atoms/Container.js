@@ -4,13 +4,13 @@ const Container = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   ${({ space }) =>
     space &&
     css`
-      padding-top: 20px;
+      padding-top: 24px;
     `}
 
   ${({ flex }) =>
@@ -45,13 +45,11 @@ const Container = styled.div`
     `}
 
     @media (min-width: 768px) {
-      padding-left: 15px;
-      padding-right: 15px;
 
       ${({ space }) =>
       space &&
       css`
-        padding-top: 40px;
+        padding-top: 48px;
       `}
     }
 `;
