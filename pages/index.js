@@ -1,8 +1,11 @@
 import Layout from 'components/layouts/Layout';
+import PageHader from 'components/atoms/PageHeader';
 
 const Home = ({posts}) => (
   <Layout>
-    <div>{posts.map(post => <h2>{post.title.rendered}</h2>)}</div>
+    <PageHader>
+    {posts.map(post => <article><img src={post.cover_url} /></article>)}
+    </PageHader>
   </Layout>
 );
 
