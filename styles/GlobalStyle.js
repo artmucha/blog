@@ -11,12 +11,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 62.5%; 
+    font-size: 16px; 
     scroll-behavior: smooth;
   }
   
   body {
-    font-size: 1.6rem;
+    font-size: 16px;
     font-family: 'Kumbh Sans', sans-serif;
     color: #1a1a1a;
     background-color: #ffffff;

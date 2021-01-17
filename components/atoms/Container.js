@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -44,7 +44,7 @@ const Container = styled.div`
       flex-direction: column;
     `}
 
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
 
       ${({ space }) =>
       space &&

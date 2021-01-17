@@ -19,11 +19,13 @@ export const theme = {
     background: '#323232'
   },
 
-  fontSize: {
-    xs: '1.2rem',
-    s: '1.4rem',
-    m: '1.6rem',
-    l: '2rem',
-    xl: '2.4rem',
+  size: {
+    xxs: '10px',
+    xs: '12px',
+    s: '14px',
+    m: '16px',
+    l: '20px',
+    xl: '24px',
+    xxl: '32px',
   },
 };

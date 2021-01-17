@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 
 const Typography = styled.div`
   display: block;
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.size.l};
   font-weight: ${({ theme }) => theme.bold};
   color: ${({ theme, color }) => (color ? color : theme.black)};
 
   ${({ small }) =>
     small &&
     css`
-      font-size: ${({ theme }) => theme.fontSize.m};
+      font-size: ${({ theme }) => theme.size.m};
   `}
 
   ${({ uppercase }) =>
@@ -34,7 +34,7 @@ const Typography = styled.div`
     ${({ big }) =>
     big &&
     css`
-      font-size: ${({ theme }) => theme.fontSize.xl};
+      font-size: ${({ theme }) => theme.size.xl};
     `}
   }
 

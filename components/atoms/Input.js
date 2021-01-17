@@ -9,7 +9,7 @@ const Input = styled.input`
 	border-bottom: 1px solid ${({ theme }) => theme.white};
 	color: ${({ theme }) => theme.white};
 	font-weight: ${({ theme }) => theme.bold};
-	font-size:  ${({ theme }) => theme.fontSize.m};
+	font-size:  ${({ theme }) => theme.size.m};
 	outline: 0;
 
 	&::placeholder {

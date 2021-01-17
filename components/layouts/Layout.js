@@ -49,7 +49,7 @@ const Footer = styled.footer`
   line-height: 1.7;
   font-weight: ${({ theme }) => theme.regular};
   color: ${({ theme }) => theme.grey300};
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.size.s};
   background-color: ${({ theme }) => theme.black};
   text-align: center;
 

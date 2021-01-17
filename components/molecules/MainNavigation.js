@@ -27,7 +27,7 @@ const Navigation = styled.nav`
 		margin-top: 48px;
 		a {
 			display: block;
-			font-size:  ${({ theme }) => theme.fontSize.m};
+			font-size:  ${({ theme }) => theme.size.m};
 			line-height: 48px;
 			font-weight: ${({ theme }) => theme.bold};
 			text-align: center;
@@ -54,7 +54,7 @@ const Navigation = styled.nav`
 				display: inline-block;
 				padding: 0 10px;
 				position: relative;
-				font-size:  ${({ theme }) => theme.fontSize.s};
+				font-size:  ${({ theme }) => theme.size.s};
 				color: ${({ theme }) => theme.black};
 
 				&:after {
