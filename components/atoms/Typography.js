@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 const Typography = styled.div`
   display: block;
   font-size: ${({ theme }) => theme.size.l};
+  line-height: ${({ theme }) => theme.size.xl};
   font-weight: ${({ theme }) => theme.bold};
   color: ${({ theme, color }) => (color ? color : theme.black)};
 
@@ -10,6 +11,7 @@ const Typography = styled.div`
     small &&
     css`
       font-size: ${({ theme }) => theme.size.m};
+      line-height: ${({ theme }) => theme.size.l};
   `}
 
   ${({ uppercase }) =>
@@ -35,6 +37,7 @@ const Typography = styled.div`
     big &&
     css`
       font-size: ${({ theme }) => theme.size.xl};
+      line-height: ${({ theme }) => theme.size.xxl};
     `}
   }
 

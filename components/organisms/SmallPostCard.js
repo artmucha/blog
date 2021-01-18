@@ -4,13 +4,15 @@ import Link from 'next/link';
 import Typography from 'components/atoms/Typography';
 
 const CardWrapper = styled.article`
+	display: flex;
   background-color: ${({ theme }) => theme.white};
   margin-top: ${({ theme }) => theme.size.xl};
 `;
 
 const Cover = styled.div`
-  display: flex;
-  position: relative;
+  flex: 0 0 30%;
+  width: 30%;
+	margin-right: ${({ theme }) => theme.size.s};
   img {
     width: 100%;
     height: 100%;
@@ -19,26 +21,22 @@ const Cover = styled.div`
 `;
 
 const PostTitle = styled(Typography)`
-  margin-top: ${({ theme }) => theme.size.s};
-  font-size: ${({ theme }) => theme.size.m};
-  line-height: ${({ theme }) => theme.size.l};
+	width: 100%;
+  font-size: ${({ theme }) => theme.size.s};
+  line-height: ${({ theme }) => theme.size.m};
 
   a {
     color: ${({ theme }) => theme.black};
   }
 `;
 
-const PostCard = ({cover, title, link}) => {
+const SmallPostCard = ({cover, title, link}) => {
   
   return (
     <CardWrapper>
-      <Link href={link}>
-        <a title={title}>
-          <Cover>
-            <img src={cover} alt={title} />
-          </Cover>
-        </a>
-      </Link>
+			<Cover>
+				<img src={cover} alt={title} />
+			</Cover>
       <PostTitle as='h3'>
         <Link href={link}>
           <a title={title}>
@@ -50,4 +48,4 @@ const PostCard = ({cover, title, link}) => {
   );
 };
 
-export default PostCard;
+export default SmallPostCard;
