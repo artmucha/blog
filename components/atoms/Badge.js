@@ -5,7 +5,7 @@ const Badge = styled.span`
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  padding: 5px 5px 3px;
+  padding: 5px 5px 2px;
   text-align: center;
   letter-spacing: 1px;
   font-size: ${({ theme }) => theme.size.xxs};

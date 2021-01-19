@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Container from 'components/atoms/Container';
 import MainNavigation from 'components/molecules/MainNavigation';
 import SearchForm from 'components/molecules/SearchForm';
+import DataLoader from 'components/molecules/DataLoader';
 
 import MenuIcon from '../../public/icons/menu-icon.svg';
 import SearchIcon from '../../public/icons/search-icon.svg';
@@ -60,11 +61,11 @@ const Footer = styled.footer`
 `;
 
 const Layout = ({ children, title = 'Blog'}) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 	
-	const startLoading = () => setLoading(true);
+	const startLoading = () => setLoading(false);
 	const stopLoading = () => setLoading(false);
 
   useEffect(() => {
@@ -90,7 +91,7 @@ const Layout = ({ children, title = 'Blog'}) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap' rel='stylesheet'/>
       </Head>
-
+      { loading && <DataLoader /> }
 			<Header>
         <Container flex spaceBetween>
           <MenuButton onClick={() => setOpen(!open)} />
