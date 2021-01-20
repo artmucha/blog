@@ -30,7 +30,7 @@ const PostTitle = styled(Typography)`
   }
 `;
 
-const SmallPostCard = ({cover, title, link}) => {
+const SmallPostCard = ({cover, title, slug}) => {
   
   return (
     <CardWrapper>
@@ -38,7 +38,7 @@ const SmallPostCard = ({cover, title, link}) => {
 				<img src={cover} alt={title} />
 			</Cover>
       <PostTitle as='h3'>
-        <Link href={link}>
+        <Link href={slug}>
           <a title={title}>
           {title}
           </a>

@@ -61,11 +61,11 @@ const Footer = styled.footer`
 `;
 
 const Layout = ({ children, title = 'Blog'}) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 	
-	const startLoading = () => setLoading(false);
+	const startLoading = () => setLoading(true);
 	const stopLoading = () => setLoading(false);
 
   useEffect(() => {

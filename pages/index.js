@@ -5,41 +5,38 @@ import Container from 'components/atoms/Container';
 import ArticleCover from 'components/atoms/ArticleCover';
 import CategoryBox from 'components/organisms/CategoryBox';
 
-const Home = ({posts}) => {
+import { getAllPosts } from 'lib/api';
+
+const Home = ({ posts: { edges } }) => {
   return (
     <Layout>
       <PageHader>
-      {posts.slice(0,4).map((post, i) => (
-        <article key={post.uid}>
+      {edges.slice(0,4).map(({ node }, i) => (
+        <article key={node.id}>
           <ArticleCover 
             index={i}
-            cover={post.cover_url} 
-            title={post.title.rendered} 
-            link={post.link}
-            categories={post.categories} 
+            cover={node.featuredImage.node.sourceUrl} 
+            title={node.title} 
+            slug={node.slug}
+            categories={node.categories.edges} 
           />
         </article>
       ))}
       </PageHader>
       <Container>
         <Grid s={1} m={2}>
-          <CategoryBox posts={posts} />
+          <CategoryBox posts={edges} />
         </Grid>
       </Container>
     </Layout>
   )
 };
 
-export async function getServerSideProps() {
-  const API_URL = process.env.WORDPRESS_API_URL
-  
-  const res = await fetch(`${API_URL}/posts`);
-  const data = await res.json();
-  console.log(data)
-
+export async function getStaticProps() {
+  const data = await getAllPosts();
   return {
     props: { posts: data }
-  }
+  };
 };
 
 export default Home;

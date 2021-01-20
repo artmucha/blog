@@ -54,17 +54,17 @@ const CategoryBox = ({posts}) => (
 		</CategorisHeader>
 		<Grid s={1} m={2}>
 			<PostCard 
-				cover={posts[0].cover_url} 
-				title={posts[0].title.rendered} 
-				link={posts[0].link}
+				cover={posts[0].node.featuredImage.node.sourceUrl} 
+				title={posts[0].node.title} 
+				slug={posts[0].node.slug}
 			/>
 			<div>
-				{posts.slice(1,4).map(post => (
+				{posts.slice(1,4).map(({node}) => (
 					<SmallPostCard 
-						key={post.uid}
-						cover={post.cover_url} 
-						title={post.title.rendered} 
-						link={post.link}
+						key={node.id}
+						cover={node.featuredImage.node.sourceUrl} 
+						title={node.title} 
+						slug={node.slug}
 					/>
 				))}
 			</div>

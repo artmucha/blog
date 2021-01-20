@@ -52,15 +52,15 @@ const Heading = styled.header`
 	}
 `;
 
-const ArticleCover = ({index, cover, title, link, categories}) => {
+const ArticleCover = ({index, cover, title, slug, categories}) => {
 	return (
 		<Cover>
 			<img src={cover} alt={title} />
 			<Heading index={index}>
-				{categories.map(cat => <Badge key={cat} color={cat}>Gry</Badge>)}
+				{categories.map(({node}) => <Badge key={node.categoryId} color={node.categoryId}>{node.name}</Badge>)}
 				<h2>
-          <Link href={link} title={title}>
-            <a>
+          <Link href={slug}>
+            <a title={title}>
               {title}
             </a>
           </Link>
