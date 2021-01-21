@@ -36,7 +36,7 @@ const Typography = styled.div`
     ${({ big }) =>
     big &&
     css`
-      font-size: ${({ theme }) => theme.size.xl};
+      font-size: ${({ theme }) => theme.size.xxl};
       line-height: ${({ theme }) => theme.size.xxl};
     `}
   }

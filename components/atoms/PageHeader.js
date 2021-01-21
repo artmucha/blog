@@ -22,7 +22,7 @@ const PageHader = styled.div`
 
   @media(min-width: 992px) {
 		width: 100%;
-		max-width: 1400px;
+		max-width: 1200px;
 		margin: 24px auto 48px auto;
 		padding-left: 15px;
 		padding-right: 15px;

@@ -11,12 +11,28 @@ import { getAllPostsWithSlug, getPost } from 'lib/api';
 
 const Article = styled.article`
   overflow-x: hidden;
+
+  h2 {
+    margin: 24px 0;
+    font-size: ${({ theme }) => theme.size.xl};
+    line-height:  ${({ theme }) => theme.size.xxl};
+  }
+
+  p {
+    line-height:  ${({ theme }) => theme.size.l};
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+  }
+
 `;
 
 const Hero = styled.header`
   width: 100%;
   height: 70vh;
-	background-color: ${({ theme }) => theme.playstation};
+	background-color: ${({ theme }) => theme.white};
   position: relative;
   margin-left: 10px;
   border-bottom-left-radius: 4em;
@@ -52,13 +68,21 @@ const Heading = styled.div`
     max-width: 1300px;
   }
 
-  h1 {
-    display: block;
-    margin: 5px 0;
-  }
-
   @media (min-width: 768px) {
     padding: 15px 15px 25px;
+  }
+`;
+
+const PageTitle = styled(Typography)`
+  font-size: ${({ theme }) => theme.size.xl};
+  line-height: ${({ theme }) => theme.size.xxl};
+  display: block;
+  margin: 5px 0;
+  max-width: 600px;
+
+  @media (min-width: 992px) {
+    font-size: ${({ theme }) => theme.size.xxl};
+    line-height: 38px;
   }
 `;
 
@@ -70,7 +94,7 @@ const SinglePage = ({post}) => {
     };
 
     const formDate = date => {
-        const newDate = newDate(date);
+        const newDate = new Date(date);
         return `${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`;
     };
 
@@ -81,15 +105,15 @@ const SinglePage = ({post}) => {
           <img src={post.featuredImage.node.sourceUrl} alt={post.title} />
             <Heading>
               <Container>
-                {/* <Badge platform={game.platform.value.maker}>{game.platform.value.label}</Badge> */}
-                {/* <Typography as="h1" big>{game.title}</Typography> */}
+                <Badge>{post.categories.edges[0].node.name}</Badge>
+                <PageTitle as="h1">{post.title}</PageTitle>
+                <Paragraph small>Opublikowane: {formDate(post.date)}</Paragraph>
               </Container>
             </Heading>
         </Hero>
-        <Container>
-         
+        <Container space>
+          <div dangerouslySetInnerHTML={{__html: post.content}}></div>
         </Container>
-    
       </Article>
     </Layout>
   ) 
@@ -107,7 +131,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
     const data = await getPost(params.slug)
-    console.log(data)
   
     return {
       props: { post: data.post }
