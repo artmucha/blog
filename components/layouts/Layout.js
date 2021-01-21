@@ -12,6 +12,9 @@ import DataLoader from 'components/molecules/DataLoader';
 import MenuIcon from '../../public/icons/menu-icon.svg';
 import SearchIcon from '../../public/icons/search-icon.svg';
 
+import menu from 'constans/menu';
+import Grid from 'components/atoms/Grid';
+
 const Header = styled.header`
   background-color: ${({ theme }) => theme.black};
   padding-top: 15px;
@@ -51,21 +54,50 @@ const SearchButton = styled(SearchIcon)`
 `;
 
 const Footer = styled.footer`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 20px;
-  line-height: 1.7;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-top: 24px;
   font-weight: ${({ theme }) => theme.regular};
-  color: ${({ theme }) => theme.grey300};
   font-size: ${({ theme }) => theme.size.s};
+  line-height: ${({ theme }) => theme.size.m};
   background-color: ${({ theme }) => theme.black};
   text-align: center;
 
   @media(min-width: 768px) {
     margin-top: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
     text-align: left;
   }
 `;
+
+const FooterMenu = styled.ul`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  p {
+    color: ${({ theme }) => theme.white};
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  a {
+    display: inline;
+    color: ${({ theme }) => theme.grey300};
+    line-height: ${({ theme }) => theme.size.l};
+    transition: color .2s linear;
+
+    &:hover {
+      color: ${({ theme }) => theme.grey100};
+    }
+  }
+
+  @media(min-width: 768px) {
+    text-align: left;
+  }
+`;
+
 
 const Layout = ({ children, title = 'Blog'}) => {
   const [loading, setLoading] = useState(false);
@@ -115,7 +147,19 @@ const Layout = ({ children, title = 'Blog'}) => {
 			{children}
 			
 			<Footer>
-				Stopka
+        <Container>
+          <Grid s={1} m={3}>
+            <FooterMenu>
+              <p>Kategorie</p>
+              { menu.map(item => <Link key={item.link} href={item.link}><a title={item.text}>{item.text}</a></Link>) }
+            </FooterMenu>
+            <FooterMenu>
+              <p>Kontakt</p>
+              <a href="mailto:kontakt@blog.pl">kontakt@blog.pl</a>
+            </FooterMenu>
+            <div></div>
+          </Grid>
+        </Container>
 			</Footer>
     </>
   )
