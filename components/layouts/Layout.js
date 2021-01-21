@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
+import Link from 'next/link';
 import Head from 'next/head';
 import styled from 'styled-components';
 
@@ -13,15 +14,21 @@ import SearchIcon from '../../public/icons/search-icon.svg';
 
 const Header = styled.header`
   background-color: ${({ theme }) => theme.black};
-  color: ${({ theme }) => theme.white};
   padding-top: 15px;
   padding-bottom: 15px;
   box-shadow: 0px 6px 8px 0px rgba(0,0,0,.08);
 
+  a {
+    color: ${({ theme }) => theme.white};
+  }
+
   @media(min-width: 992px) {
     padding-bottom: 0;
     background-color: ${({ theme }) => theme.white};
-    color: ${({ theme }) => theme.black};
+    
+    a {
+      color: ${({ theme }) => theme.black};
+    }
   }
 `;
 
@@ -95,7 +102,7 @@ const Layout = ({ children, title = 'Blog'}) => {
 			<Header>
         <Container flex spaceBetween>
           <MenuButton onClick={() => setOpen(!open)} />
-          <h1>Planeta Geeka</h1>
+          <h1><Link href="/"><a titie="Planeta Geeka">Planeta Geeka</a></Link></h1>
           <SearchButton onClick={() => setShowSearch(!showSearch)} >
           </SearchButton>
           <SearchForm showSearch={showSearch} setShowSearch={setShowSearch} />

@@ -52,7 +52,7 @@ const Navigation = styled.nav`
 			flex-direction: row;
 			a {
 				display: inline-block;
-				padding: 0 10px;
+				margin-right: 20px;
 				position: relative;
 				font-size:  ${({ theme }) => theme.size.s};
 				color: ${({ theme }) => theme.black};
