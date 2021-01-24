@@ -10,7 +10,7 @@ const Navigation = styled.nav`
 	padding: 15px;
   width: 100%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme }) => theme.white};
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@ const Navigation = styled.nav`
 
 	svg {
 		align-self: flex-end;
-		fill: ${({ theme }) => theme.white};
+		fill: ${({ theme }) => theme.black};
 	}
 
 	ul {
@@ -32,7 +32,7 @@ const Navigation = styled.nav`
 			font-weight: ${({ theme }) => theme.bold};
 			text-align: center;
 			text-transform: uppercase;
-			color: ${({ theme }) => theme.white};
+			color: ${({ theme }) => theme.black};
 		}
 	}
 
@@ -41,7 +41,7 @@ const Navigation = styled.nav`
 		padding: 0;
 		height: auto;
 		transform: translateX(0);
-		background-color: ${({ theme }) => theme.white};
+		background-color: transparent;
 
 		svg {
 			display: none;
@@ -55,7 +55,8 @@ const Navigation = styled.nav`
 				margin-right: 20px;
 				position: relative;
 				font-size:  ${({ theme }) => theme.size.s};
-				color: ${({ theme }) => theme.black};
+				line-height:  ${({ theme }) => theme.size.xl};
+				color: ${({ theme }) => theme.white};
 
 				&:after {
 					content: '';
@@ -66,7 +67,7 @@ const Navigation = styled.nav`
 					margin: 0 auto;
 					width: 0;
 					height: 3px;
-					background-color: ${({ theme }) => theme.black};
+					background-color: ${({ theme }) => theme.white};
 					transform: translate3d(0,0,0);
 					transition: width .2s ease;
 				}

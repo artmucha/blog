@@ -16,28 +16,28 @@ import menu from 'constans/menu';
 import Grid from 'components/atoms/Grid';
 
 const Header = styled.header`
-  background-color: ${({ theme }) => theme.black};
   padding-top: 15px;
   padding-bottom: 15px;
-  box-shadow: 0px 6px 8px 0px rgba(0,0,0,.08);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 
   a {
     color: ${({ theme }) => theme.white};
-  }
-
-  @media(min-width: 992px) {
-    padding-bottom: 0;
-    background-color: ${({ theme }) => theme.white};
-    
-    a {
-      color: ${({ theme }) => theme.black};
-    }
+    font-size: ${({ theme }) => theme.size.xl};
+    font-weight: ${({ theme }) => theme.bold};
+    line-height: ${({ theme }) => theme.size.xxl};
   }
 `;
 
 const MenuButton = styled(MenuIcon)`
   fill: ${({ theme }) => theme.white};
   cursor: pointer;
+  float: left;
+  margin-right: 20px;
 
   @media(min-width: 992px) {
     display: none;
@@ -47,9 +47,12 @@ const MenuButton = styled(MenuIcon)`
 const SearchButton = styled(SearchIcon)`
   fill: ${({ theme }) => theme.white};
   cursor: pointer;
+`;
 
+const NavigationWrapper = styled.div`
   @media(min-width: 992px) {
-    fill: ${({ theme }) => theme.black};
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -133,14 +136,15 @@ const Layout = ({ children, title = 'Blog'}) => {
       { loading && <DataLoader /> }
 			<Header>
         <Container flex spaceBetween>
-          <MenuButton onClick={() => setOpen(!open)} />
-          <h1><Link href="/"><a titie="Planeta Geeka">Planeta Geeka</a></Link></h1>
-          <SearchButton onClick={() => setShowSearch(!showSearch)} >
-          </SearchButton>
+          <div>
+            <MenuButton onClick={() => setOpen(!open)} />
+            <Link href="/"><a titie="Planeta Geeka">Planeta Geeka</a></Link>
+          </div>
+          <NavigationWrapper>
+            <MainNavigation open={open} setOpen={setOpen} />
+            <SearchButton onClick={() => setShowSearch(!showSearch)} />
+          </NavigationWrapper>
           <SearchForm showSearch={showSearch} setShowSearch={setShowSearch} />
-        </Container>
-        <Container flex alignCenter spaceBetween>
-          <MainNavigation open={open} setOpen={setOpen} />
         </Container>
 			</Header>
 

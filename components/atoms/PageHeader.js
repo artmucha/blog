@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const PageHader = styled.div`
   display: grid;
 	grid-row-gap: 5px;
-	margin-bottom: 24px;
 
   @media(min-width: 768px) {
 		article:nth-of-type(1) { grid-area: first; }
@@ -22,10 +21,6 @@ const PageHader = styled.div`
 
   @media(min-width: 992px) {
 		width: 100%;
-		max-width: 1200px;
-		margin: 24px auto 48px auto;
-		padding-left: 15px;
-		padding-right: 15px;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
 			'first first second second'

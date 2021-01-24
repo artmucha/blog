@@ -10,7 +10,7 @@ const StyledSearch = styled.form`
   padding: 15px;
   width: 100%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme }) => theme.white};
   position: fixed;
   top: 0;
   left: 0;
@@ -20,18 +20,18 @@ const StyledSearch = styled.form`
 
   svg {
 		align-self: flex-end;
-		fill: ${({ theme }) => theme.white};
+		fill: ${({ theme }) => theme.black};
 	}
-
-  @media(min-width: 992px) {
-		svg {
-			fill: ${({ theme }) => theme.black};
-		}
-  }
 `;
 
 const SearchInput = styled(Input)`
   margin-top: 48px;
+  color: ${({ theme }) => theme.black};
+  border-bottom: 1px solid ${({ theme }) => theme.black};
+
+  &::placeholder {
+    color: ${({ theme }) => theme.black};
+  }
 `;
 
 const SearchForm = ({ showSearch, setShowSearch }) => {
