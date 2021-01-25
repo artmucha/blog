@@ -16,6 +16,7 @@ import menu from 'constans/menu';
 import Grid from 'components/atoms/Grid';
 
 const Header = styled.header`
+  margin: 0 auto;
   padding-top: 15px;
   padding-bottom: 15px;
   position: absolute;
@@ -23,6 +24,7 @@ const Header = styled.header`
   right: 0;
   left: 0;
   width: 100%;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
   z-index: 99;
 
   a {
@@ -30,6 +32,14 @@ const Header = styled.header`
     font-size: ${({ theme }) => theme.size.xl};
     font-weight: ${({ theme }) => theme.bold};
     line-height: ${({ theme }) => theme.size.xxl};
+  }
+
+  @media(min-width: 768px) {
+    padding: 60px 20px 15px 20px;
+  }
+
+  @media(min-width: 992px) {
+    padding: 90px 20px 15px 20px;
   }
 `;
 
@@ -135,7 +145,7 @@ const Layout = ({ children, title = 'Blog'}) => {
       </Head>
       { loading && <DataLoader /> }
 			<Header>
-        <Container flex spaceBetween>
+        <Container flex spaceBetween alignCenter>
           <div>
             <MenuButton onClick={() => setOpen(!open)} />
             <Link href="/"><a titie="Planeta Geeka">Planeta Geeka</a></Link>
