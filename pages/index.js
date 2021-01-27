@@ -1,8 +1,7 @@
 import Layout from 'components/layouts/Layout';
-import Grid from 'components/atoms/Grid';
-import PageHader from 'components/atoms/PageHeader';
+import PageHader from 'components/organisms/PageHeader';
 import Container from 'components/atoms/Container';
-import CategoryBox from 'components/organisms/CategoryBox';
+import HomeContent from 'components/organisms/HomeContent';
 
 import { getAllPosts } from 'lib/api';
 
@@ -11,9 +10,7 @@ const Home = ({ posts: { edges } }) => {
     <Layout>
       <PageHader posts={edges} />
       <Container>
-        <Grid s={1} m={2}>
-          <CategoryBox posts={edges} />
-        </Grid>
+        <HomeContent posts={edges} />
       </Container>
     </Layout>
   )

@@ -5,7 +5,7 @@ const Paragraph = styled.p`
     small ? theme.size.xs : theme.size.s};
   font-weight: ${({ theme }) => theme.regular};
   color: ${({ theme, color }) => (color ? color : theme.black)};
-  line-height: 1.4;
+  line-height: 150%;
 `;
 
 export default Paragraph;

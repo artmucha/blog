@@ -73,9 +73,9 @@ const Heading = styled.div`
   }
 `;
 
-const PageTitle = styled(Typography)`
+const PageTitle = styled.h1`
   font-size: ${({ theme }) => theme.size.xl};
-  line-height: ${({ theme }) => theme.size.xxl};
+  line-height: 115%;
   display: block;
   margin: 5px 0;
   max-width: 600px;

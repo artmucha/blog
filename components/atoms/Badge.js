@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 
 const Badge = styled.span`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   text-transform: uppercase;
-  padding: 5px 5px 2px;
-  margin-right: 5px;
-  text-align: center;
-  letter-spacing: 1px;
+  pointer-events: all;
+  padding: 6px 10px 3px 10px;
+  margin-right: 2px;
+  color: ${({ theme }) => theme.black};
   font-size: ${({ theme }) => theme.size.xxs};
-  font-weight: ${({ theme }) => theme.bold};
-  color: ${({ theme }) => theme.white};
-  /* background: ${({ theme, color }) => {
-    if(color) return theme[color];
-  }}; */
-  background-color: darkblue;
+  background-color: ${({ theme }) => theme.white};
 `;
 
 export default Badge;

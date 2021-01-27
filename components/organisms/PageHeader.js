@@ -28,7 +28,7 @@ const Article = styled.article`
 
 	&:hover {
 		img {
-			transform: scale(1.1);
+			transform: scale(1.05);
 		}
 
 		h2 {
@@ -129,6 +129,10 @@ const Cover = styled.div`
 	@media(min-width: 768px) {
 		height: 500px;
 	}
+
+	@media(min-width: 768px) {
+		height: 540px;
+	}
 `;
 
 const Content = styled.div`
@@ -174,7 +178,7 @@ const Header = styled.header`
 	@media(min-width: 992px) {
 		top: -70px;
 		width: calc(100% - 40px);
-    padding: 50px 80px 60px 60px;
+    padding: 50px;
 		margin: 0 0 0 auto;
 
 		h2 {
