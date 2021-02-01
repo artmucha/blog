@@ -10,7 +10,7 @@ const Container = styled.div`
   ${({ space }) =>
     space &&
     css`
-      padding-top: 24px;
+      padding-top: 15px;
     `}
 
   ${({ flex }) =>
@@ -49,7 +49,7 @@ const Container = styled.div`
       ${({ space }) =>
       space &&
       css`
-        padding-top: 48px;
+        padding-top: 50px;
       `}
     }
 `;

@@ -63,7 +63,7 @@ const CoverBackground = styled.div`
 	display: none;
 
 	@media (min-width: 768px) {
-		display: block;
+	display: block;
     position: absolute;
     top: 0px;
     left: 0px;

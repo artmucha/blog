@@ -4,11 +4,12 @@ const Badge = styled.span`
   display: inline-block;
   text-transform: uppercase;
   pointer-events: all;
-  padding: 6px 10px 3px 10px;
-  margin-right: 2px;
-  color: ${({ theme }) => theme.black};
+  margin-right: 15px;
+  background-color: transparent;
+  line-height: 150%;
+  color: ${({ theme }) => theme.grey300};
   font-size: ${({ theme }) => theme.size.xxs};
-  background-color: ${({ theme }) => theme.white};
+  font-weight: ${({ theme }) => theme.bold};
 `;
 
 export default Badge;
