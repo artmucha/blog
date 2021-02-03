@@ -9,6 +9,7 @@ import MainNavigation from 'components/molecules/MainNavigation';
 import SearchForm from 'components/molecules/SearchForm';
 import DataLoader from 'components/molecules/DataLoader';
 
+import Logo from '../../public/logos/logo_geek_long_white.svg';
 import MenuIcon from '../../public/icons/menu-icon.svg';
 import SearchIcon from '../../public/icons/search-icon.svg';
 
@@ -148,7 +149,11 @@ const Layout = ({ children, title = 'Blog'}) => {
         <Container flex spaceBetween alignCenter>
           <div>
             <MenuButton onClick={() => setOpen(!open)} />
-            <Link href="/"><a titie="Planeta Geeka">Planeta Geeka</a></Link>
+            <Link href="/">
+              <a titie="Planeta Geeka">
+                <Logo />
+              </a>
+            </Link>
           </div>
           <NavigationWrapper>
             <MainNavigation open={open} setOpen={setOpen} />
