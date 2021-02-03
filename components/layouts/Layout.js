@@ -150,7 +150,7 @@ const Layout = ({ children, title = 'Blog'}) => {
           <div>
             <MenuButton onClick={() => setOpen(!open)} />
             <Link href="/">
-              <a titie="Planeta Geeka">
+              <a titie="Geeks corner">
                 <Logo />
               </a>
             </Link>
