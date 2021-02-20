@@ -21,9 +21,6 @@ const Header = styled.header`
   padding-top: 15px;
   padding-bottom: 15px;
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
   width: 100%;
   text-shadow: rgba(0,0,0,.01) 0 0 1px;
   z-index: 99;
@@ -71,11 +68,10 @@ const Footer = styled.footer`
   padding-top: 24px;
   padding-bottom: 24px;
   margin-top: 24px;
+  text-align: center;
+  line-height: 150%;
   font-weight: ${({ theme }) => theme.regular};
   font-size: ${({ theme }) => theme.size.s};
-  line-height: ${({ theme }) => theme.size.m};
-  background-color: ${({ theme }) => theme.black};
-  text-align: center;
 
   @media(min-width: 768px) {
     margin-top: 48px;
@@ -91,20 +87,16 @@ const FooterMenu = styled.ul`
   text-align: center;
 
   p {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.black};
     text-transform: uppercase;
     margin-bottom: 5px;
   }
 
   a {
     display: inline;
-    color: ${({ theme }) => theme.grey300};
-    line-height: ${({ theme }) => theme.size.l};
+    line-height: 150%;
     transition: color .2s linear;
-
-    &:hover {
-      color: ${({ theme }) => theme.grey100};
-    }
+    color: ${({ theme }) => theme.black};
   }
 
   @media(min-width: 768px) {
@@ -147,14 +139,12 @@ const Layout = ({ children, title = 'Blog'}) => {
       { loading && <DataLoader /> }
 			<Header>
         <Container flex spaceBetween alignCenter>
-          <div>
-            <MenuButton onClick={() => setOpen(!open)} />
-            <Link href="/">
-              <a titie="Geeks corner">
-                <Logo />
-              </a>
-            </Link>
-          </div>
+          <MenuButton onClick={() => setOpen(!open)} />
+          <Link href="/">
+            <a titie="Geek's corner">
+              <Logo />
+            </a>
+          </Link>
           <NavigationWrapper>
             <MainNavigation open={open} setOpen={setOpen} />
             <SearchButton onClick={() => setShowSearch(!showSearch)} />

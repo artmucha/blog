@@ -10,9 +10,10 @@ import { getAllPostsWithSlug, getPost } from 'lib/api';
 
 const Article = styled.article`
   width: 100%;
+  position: relative;
 
   p,li {
-    margin-bottom: 15px;
+    margin-top: 15px;
     line-height: 150%;
     font-size: ${({ theme }) => theme.size.m};
     font-weight: ${({ theme }) => theme.regular};
@@ -27,94 +28,46 @@ const Article = styled.article`
 `;
 
 const Hero = styled.header`
+  display: block;
   width: 100%;
   height: 310px;
-  position: relative;
+	position: relative;
+	overflow: hidden;
+	
+	&:before {
+		content: "";
+		background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.4) 1%, rgba(0, 0, 0, 0) 46%);
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
 
-  &:before {
-    content: "";
-    background-image: linear-gradient(-180deg,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0) 46%);
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 
   @media(min-width: 768px) {
-    height: auto;
-    padding: 120px 35px 0px;
-  }
-
-  @media(min-width: 992px) {
-    padding: 150px 35px 0px;
-  }
-`;
-
-const BackgroundCover = styled.div`
-  display: none;
-
-  @media (min-width: 768px) {
-	  display: block;
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: auto;
-    width: 100%;
     height: 400px;
-    background: black;
-    overflow: hidden;
 
-		& > div {
-			height: 100%;
-			width: 100%;
-
-			img {
-        width: 100%;
-				transform: scale(1.5);
-    		filter: blur(12px);
-			}
-		}
-	}
-
-	@media (min-width: 992px) {
-		height: 520px;
-	}
-`;
-
-const Cover = styled.div`
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  @media(min-width: 768px) {
     img {
-      position: relative;
-      height: 480px;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      margin: 0px;
+      object-fit: cover;
+      transform: scale(1.1);
+      filter: blur(12px);
     }
   }
 
   @media(min-width: 992px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 50px;
-    grid-row-gap: 50px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-
-    img {
-      grid-column: span 2 / auto;
-      position: relative;
-      height: 550px;
-    }
+    height: 540px;
   }
 `;
 
@@ -123,37 +76,22 @@ const PostTitle = styled.h1`
   margin-bottom: 15px;
   line-height: 115%;
   font-size: ${({ theme }) => theme.size.xxl};
-  font-weight: ${({ theme }) => theme.bold};
   color: ${({ theme }) => theme.black};
 `;
 
 const DateTime = styled.time`
-  font-size: ${({ theme }) => theme.size.xs};
-  font-weight: ${({ theme }) => theme.bold};
-  color: ${({ theme }) => theme.grey300};
   line-height: 150%;
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.size.xs};
+  color: ${({ theme }) => theme.grey300};
 `;
 
-const Content = styled.div`
-  @media(min-width: 768px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @media(min-width: 992px) {
-    padding: 0;
-
-    ${({ grid }) =>
-    grid &&
-    css`
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-column-gap: 50px;
-    `}
-
-    & > div {
-      grid-column: span 2 / auto;
-    }
+const Categories = styled.div`
+  margin-top: 40px;
+  h4 {
+    margin-bottom: 15px;
+    color: ${({ theme }) => theme.grey200};
+    font-size: ${({ theme }) => theme.size.xl};
   }
 `;
 
@@ -173,31 +111,19 @@ const SinglePage = ({post}) => {
     <Layout>
       <Article>
         <Hero>
-          <BackgroundCover>
-            <div>
-              <img src={post.featuredImage.node.sourceUrl} />
-            </div>
-          </BackgroundCover>
-          <Cover>
-            <img src={post.featuredImage.node.sourceUrl} alt={post.title} />
-          </Cover>
+          <img src={post.featuredImage.node.sourceUrl} />
         </Hero>
         <Container space>
-          <Content grid>
-            <div>
-              {post.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
-              
-              <PostTitle>{post.title}</PostTitle>
-              <DateTime datetime={formDate(post.date)}>Opublikowane: {formDate(post.date)}</DateTime>
-            </div>
-            <div></div>
-          </Content>
-        </Container>
-        <Container space>
-          <Content grid>
-            <div dangerouslySetInnerHTML={{__html: post.content}}></div>
-            <aside></aside>
-          </Content>
+          {post.categories.edges.map(({node}) => (
+          <Link key={node.categoryId} href={node.slug}>
+            <a title={node.name}><Badge>{node.name}</Badge></a>
+          </Link>))}
+          <PostTitle>{post.title}</PostTitle>
+          <DateTime datetime={formDate(post.date)}>Opublikowano: {formDate(post.date)}</DateTime>
+          <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+          <Categories>
+            <h4>Więcej z tej kategorii</h4>
+          </Categories>
         </Container>
       </Article>
     </Layout>

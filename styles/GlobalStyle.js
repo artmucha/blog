@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    width: 100%;
     font-size: 16px;
     font-family: 'Kumbh Sans', sans-serif;
     color: #1a1a1a;
