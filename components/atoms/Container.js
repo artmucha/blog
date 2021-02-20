@@ -44,7 +44,14 @@ const Container = styled.div`
       flex-direction: column;
     `}
 
+    @media (min-width: 768px) {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+
     @media (min-width: 992px) {
+      padding-left: 15px;
+      padding-right: 15px;
 
       ${({ space }) =>
       space &&

@@ -33,11 +33,11 @@ const Header = styled.header`
   }
 
   @media(min-width: 768px) {
-    padding: 60px 20px 15px 20px;
+    padding: 60px 0 15px 0;
   }
 
   @media(min-width: 992px) {
-    padding: 90px 20px 15px 20px;
+    padding: 90px 0 15px 0;
   }
 `;
 
@@ -65,18 +65,16 @@ const NavigationWrapper = styled.div`
 `;
 
 const Footer = styled.footer`
-  padding-top: 24px;
-  padding-bottom: 24px;
-  margin-top: 24px;
+  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: center;
   line-height: 150%;
   font-weight: ${({ theme }) => theme.regular};
   font-size: ${({ theme }) => theme.size.s};
+  border-top: 1px solid ${({ theme }) => theme.grey200};
 
   @media(min-width: 768px) {
-    margin-top: 48px;
-    padding-top: 48px;
-    padding-bottom: 48px;
     text-align: left;
   }
 `;
@@ -87,16 +85,21 @@ const FooterMenu = styled.ul`
   text-align: center;
 
   p {
-    color: ${({ theme }) => theme.black};
     text-transform: uppercase;
     margin-bottom: 5px;
+    line-height: 150%;
+    color: ${({ theme }) => theme.grey300};
   }
 
   a {
     display: inline;
     line-height: 150%;
     transition: color .2s linear;
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.grey300};
+
+    &:hover {
+      color: ${({ theme }) => theme.black};
+    }
   }
 
   @media(min-width: 768px) {
@@ -155,8 +158,8 @@ const Layout = ({ children, title = 'Blog'}) => {
 
 			{children}
 			
-			<Footer>
-        <Container>
+      <Container>
+        <Footer>
           <Grid s={1} m={3}>
             <FooterMenu>
               <p>Kategorie</p>
@@ -168,8 +171,8 @@ const Layout = ({ children, title = 'Blog'}) => {
             </FooterMenu>
             <div></div>
           </Grid>
-        </Container>
-			</Footer>
+        </Footer>
+      </Container>
     </>
   )
 }

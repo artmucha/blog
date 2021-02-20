@@ -54,13 +54,9 @@ const Hero = styled.header`
   @media(min-width: 768px) {
     position: absolute;
     height: 400px;
+    z-index: -1;
 
     img {
-      width: 100%;
-      height: 100%;
-      z-index: -3;
-      margin: 0px;
-      object-fit: cover;
       transform: scale(1.1);
       filter: blur(12px);
     }
@@ -68,6 +64,33 @@ const Hero = styled.header`
 
   @media(min-width: 992px) {
     height: 540px;
+  }
+`;
+
+const Content = styled(Container)`
+
+  @media(min-width: 768px) {
+    padding-top: 130px;
+  }
+
+  @media(min-width: 992px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    padding-top: 170px;
+
+    & > div {
+      grid-column: span 2 / auto;
+    }
+  }
+`;
+
+const Cover = styled.div`
+  display: none;
+
+  @media(min-width: 768px) {
+    display: block;
+    margin-bottom: 20px;  
   }
 `;
 
@@ -86,7 +109,7 @@ const DateTime = styled.time`
   color: ${({ theme }) => theme.grey300};
 `;
 
-const Categories = styled.div`
+const Categories = styled.aside`
   margin-top: 40px;
   h4 {
     margin-bottom: 15px;
@@ -113,18 +136,23 @@ const SinglePage = ({post}) => {
         <Hero>
           <img src={post.featuredImage.node.sourceUrl} />
         </Hero>
-        <Container space>
-          {post.categories.edges.map(({node}) => (
-          <Link key={node.categoryId} href={node.slug}>
-            <a title={node.name}><Badge>{node.name}</Badge></a>
-          </Link>))}
-          <PostTitle>{post.title}</PostTitle>
-          <DateTime datetime={formDate(post.date)}>Opublikowano: {formDate(post.date)}</DateTime>
-          <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+        <Content space>
+          <div>
+            <Cover>
+              <img src={post.featuredImage.node.sourceUrl} alt={post.title} />
+            </Cover>
+            {post.categories.edges.map(({node}) => (
+            <Link key={node.categoryId} href={node.slug}>
+              <a title={node.name}><Badge>{node.name}</Badge></a>
+            </Link>))}
+            <PostTitle>{post.title}</PostTitle>
+            <DateTime datetime={formDate(post.date)}>Opublikowano: {formDate(post.date)}</DateTime>
+            <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+          </div>
           <Categories>
             <h4>Więcej z tej kategorii</h4>
           </Categories>
-        </Container>
+        </Content>
       </Article>
     </Layout>
   ) 

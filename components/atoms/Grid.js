@@ -8,8 +8,8 @@ const Grid = styled.div`
     s &&
     css`
       grid-template-columns: repeat(${({ s }) => s}, 1fr);
-      grid-column-gap: 24px;
-      grid-row-gap: 24px;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
     `}
   } 
 
@@ -26,8 +26,8 @@ const Grid = styled.div`
     l &&
     css`
       grid-template-columns: repeat(${({ l }) => l}, 1fr);
-      grid-column-gap: 48px;
-      grid-row-gap: 48px;
+      grid-column-gap: 50px;
+      grid-row-gap: 50px;
     `}
   }
 `;
