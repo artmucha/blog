@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 import Layout from 'components/layouts/Layout';
 import Container from 'components/atoms/Container';
 import Badge from 'components/atoms/Badge';
+import PostCard from 'components/organisms/PostCard';
 
 import { getAllPostsWithSlug, getPost } from 'lib/api';
 
@@ -24,6 +25,17 @@ const Article = styled.article`
     width: auto;
     max-width: 100%;
     height: auto;
+    margin-top: 15px;
+  }
+
+  @media(min-width: 768px) {
+    p, ul {
+      margin-top: 30px;
+    }
+
+    img {
+      margin-top: 30px;
+    }
   }
 `;
 
@@ -49,6 +61,7 @@ const Hero = styled.header`
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+    margin: 0;
 	}
 
   @media(min-width: 768px) {
@@ -59,6 +72,7 @@ const Hero = styled.header`
     img {
       transform: scale(1.1);
       filter: blur(12px);
+      margin: 0;
     }
   }
 
@@ -69,8 +83,24 @@ const Hero = styled.header`
 
 const Content = styled(Container)`
 
+  h2, h3 {
+    margin-top: 15px;
+  }
+
+  h2 {
+    font-size: ${({ theme }) => theme.size.xl};
+  }
+
+  h3 {
+    font-size: ${({ theme }) => theme.size.l};
+  }
+
   @media(min-width: 768px) {
     padding-top: 130px;
+
+    h2, h3 {
+      margin-top: 50px;
+    }
   }
 
   @media(min-width: 992px) {
@@ -91,6 +121,14 @@ const Cover = styled.div`
   @media(min-width: 768px) {
     display: block;
     margin-bottom: 20px;  
+
+    img {
+      margin-top: 0;
+    }
+  }
+
+  @media(min-width: 992px) {
+    margin-bottom: 50px;  
   }
 `;
 
@@ -110,11 +148,24 @@ const DateTime = styled.time`
 `;
 
 const Categories = styled.aside`
-  margin-top: 40px;
+
+  & > div {
+    margin-bottom: 40px;
+  } 
+
   h4 {
     margin-bottom: 15px;
     color: ${({ theme }) => theme.grey200};
     font-size: ${({ theme }) => theme.size.xl};
+  }
+
+  @media(min-width: 992px) {
+    & > div {
+      width: 100%;
+      height: 315px;
+      align-content: space-evenly;
+      margin-bottom: 105px;
+    } 
   }
 `;
 
@@ -150,7 +201,16 @@ const SinglePage = ({post}) => {
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
           </div>
           <Categories>
-            <h4>Więcej z tej kategorii</h4>
+            <div></div>
+            <h4>Przeczytaj również</h4>
+
+            {post.categories.edges[0].node.posts.edges.slice(0,5).map(({node}) => (
+              <PostCard 
+                cover={node.featuredImage.node.sourceUrl}
+                title={node.title}
+                slug={node.slug}
+              />
+            ))}
           </Categories>
         </Content>
       </Article>

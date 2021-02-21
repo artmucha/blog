@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: #1a1a1a;
   }
 `;
 
