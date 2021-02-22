@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import PostCard from 'components/organisms/PostCard';
+import PostCard from 'components/organisms/PostCardSmall';
 import SmallPostCard from 'components/organisms/SmallPostCard';
 import Grid from 'components/atoms/Grid';
 

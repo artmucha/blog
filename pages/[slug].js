@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import Layout from 'components/layouts/Layout';
 import Container from 'components/atoms/Container';
+import Grid from 'components/atoms/Grid';
 import Badge from 'components/atoms/Badge';
-import PostCard from 'components/organisms/PostCard';
+import PostCardSmall from 'components/organisms/PostCardSmall';
 
 import { getAllPostsWithSlug, getPost } from 'lib/api';
 
@@ -58,10 +60,7 @@ const Hero = styled.header`
 	}
 
 	img {
-		width: 100%;
-		height: 100%;
 		object-fit: cover;
-    margin: 0;
 	}
 
   @media(min-width: 768px) {
@@ -72,7 +71,6 @@ const Hero = styled.header`
     img {
       transform: scale(1.1);
       filter: blur(12px);
-      margin: 0;
     }
   }
 
@@ -123,7 +121,7 @@ const Cover = styled.div`
     margin-bottom: 20px;  
 
     img {
-      margin-top: 0;
+      object-fit: cover;
     }
   }
 
@@ -160,7 +158,8 @@ const Categories = styled.aside`
   }
 
   @media(min-width: 992px) {
-    & > div {
+    & > span {
+      display: block;
       width: 100%;
       height: 315px;
       align-content: space-evenly;
@@ -182,15 +181,15 @@ const SinglePage = ({post}) => {
   };
 
   return (
-    <Layout>
+    <Layout title={`${post.title} | Geek's Corner`}>
       <Article>
         <Hero>
-          <img src={post.featuredImage.node.sourceUrl} />
+          <Image src={post.featuredImage.node.sourceUrl} layout="fill" quality="50" />
         </Hero>
         <Content space>
           <div>
             <Cover>
-              <img src={post.featuredImage.node.sourceUrl} alt={post.title} />
+              <Image src={post.featuredImage.node.sourceUrl} alt={post.title} width="750" height="500" layout="responsive" quality="80" />
             </Cover>
             {post.categories.edges.map(({node}) => (
             <Link key={node.categoryId} href={node.slug}>
@@ -201,16 +200,18 @@ const SinglePage = ({post}) => {
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
           </div>
           <Categories>
-            <div></div>
+            <span></span>
             <h4>Przeczytaj również</h4>
 
-            {post.categories.edges[0].node.posts.edges.slice(0,5).map(({node}) => (
-              <PostCard 
-                cover={node.featuredImage.node.sourceUrl}
-                title={node.title}
-                slug={node.slug}
-              />
-            ))}
+            <Grid s={1} m={2} l={1}>
+              {post.categories.edges[0].node.posts.edges.slice(0,4).map(({node}) => (
+                <PostCardSmall 
+                  cover={node.featuredImage.node.sourceUrl}
+                  title={node.title}
+                  slug={node.slug}
+                />
+              ))}
+            </Grid>
           </Categories>
         </Content>
       </Article>

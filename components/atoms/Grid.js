@@ -27,7 +27,7 @@ const Grid = styled.div`
     css`
       grid-template-columns: repeat(${({ l }) => l}, 1fr);
       grid-column-gap: 50px;
-      grid-row-gap: 50px;
+      grid-row-gap: 40px;
     `}
   }
 `;

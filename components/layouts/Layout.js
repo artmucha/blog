@@ -108,7 +108,7 @@ const FooterMenu = styled.ul`
 `;
 
 
-const Layout = ({ children, title = 'Blog'}) => {
+const Layout = ({ children, title = "Geek's Corner"}) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
