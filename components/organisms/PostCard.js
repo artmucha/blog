@@ -3,15 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const CardWrapper = styled.article`
-  background-color: ${({ theme }) => theme.white};
+	width: 100%;
+	background-color: ${({ theme }) => theme.white};
 
   a {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    overflow: hidden;
-    line-height: 115%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		overflow: hidden;
   }
 
   &:hover {
@@ -26,34 +26,26 @@ const CardWrapper = styled.article`
 
 const CardCover = styled.div`
   display: block;
-  min-width: 105px;
-  max-width: 175px;
+  width: 100%;
   height: 100%;
-  margin-right: 15px;
   img {
     transition: all .2s ease-in-out;
     object-fit: cover;
   }
-
-  @media(min-width: 992px) {
-    min-width: 145px;
-    max-width: 195px;
-  }
 `;
 
 const CardTitle = styled.h3`
+	margin-top: 20px!important;
+	line-height: 115%;
   transition: all .2s ease-in-out;
-  margin-top: 0!important;
-  font-size: ${({ theme }) => theme.size.m}!important;
-  font-size: ${({ theme }) => theme.black}!important;
 `;
 
-const PostCardSmall = ({cover, title, slug}) => (
+const PostCard = ({cover, title, slug}) => (
   <CardWrapper>
     <Link href={slug}>
       <a title={title}>
         <CardCover>
-          <Image src={cover} alt={title} layout="responsive" width="200" height="120" quality="75" />
+          <Image src={cover} alt={title} layout="responsive" width="370" height="260" quality="80" />
         </CardCover>
         <CardTitle>{title}</CardTitle>
       </a>
@@ -61,4 +53,4 @@ const PostCardSmall = ({cover, title, slug}) => (
   </CardWrapper>
 );
 
-export default PostCardSmall;
+export default PostCard;

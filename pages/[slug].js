@@ -8,6 +8,7 @@ import Container from 'components/atoms/Container';
 import Grid from 'components/atoms/Grid';
 import Badge from 'components/atoms/Badge';
 import PostCardSmall from 'components/organisms/PostCardSmall';
+import PostCard from 'components/organisms/PostCard';
 
 import { getAllPostsWithSlug, getPost } from 'lib/api';
 
@@ -147,7 +148,9 @@ const DateTime = styled.time`
 
 const Categories = styled.aside`
 
-  & > div {
+  & > div,
+  & > span {
+    display: grid;
     margin-bottom: 40px;
   } 
 
@@ -201,11 +204,28 @@ const SinglePage = ({post}) => {
           </div>
           <Categories>
             <span></span>
-            <h4>Przeczytaj również</h4>
 
+            {post.tags.edges.length ? ( 
+              <>
+                <h4>Przeczytaj również</h4>
+                <Grid s={1} m={2} l={1}>
+                  {post.tags.edges[0].node.posts.edges.slice(0,4).map(({node}) => (
+                    <PostCardSmall 
+                      key={node.slug}
+                      cover={node.featuredImage.node.sourceUrl}
+                      title={node.title}
+                      slug={node.slug}
+                    />
+                  ))}
+                </Grid>
+              </>
+            ) : null }
+
+            <h4>W tej kategorii</h4>
             <Grid s={1} m={2} l={1}>
               {post.categories.edges[0].node.posts.edges.slice(0,4).map(({node}) => (
-                <PostCardSmall 
+                <PostCard
+                  key={node.slug}
                   cover={node.featuredImage.node.sourceUrl}
                   title={node.title}
                   slug={node.slug}

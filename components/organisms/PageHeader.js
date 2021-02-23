@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import Badge from 'components/atoms/Badge';
+
 const PageHaderWrapper = styled.div`
   display: block;
 
@@ -153,20 +155,12 @@ const Header = styled.header`
 	background: ${({ theme }) => theme.white};
 
 	h2 {
+		margin-top: 10px;
     margin-bottom: 15px;
     transition: color .2s linear;
 		line-height: 115%;
 		font-size: ${({ theme }) => theme.size.xl};
 		color: ${({ theme }) => theme.black};
-	}
-
-	a {
-		display: inline-block;
-		margin-right: 10px;
-		margin-bottom: 10px;
-		text-transform: uppercase;
-		font-size: ${({ theme }) => theme.size.xxs};
-		color: ${({ theme }) => theme.grey300};
 	}
 
 	@media(min-width: 768px) {
@@ -205,7 +199,7 @@ const PageHader = ({posts}) => {
 									<img src={node.featuredImage.node.sourceUrl} alt={node.title} />
 								</Cover>
 								<Header>
-									{node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}>{node.name}</a></Link>)}
+									{node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
 									<h2>{node.title}</h2>
 								</Header>
 							</Content>

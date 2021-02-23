@@ -5,7 +5,7 @@ export const theme = {
   grey200: '#d7e1e2',
   grey300: '#9cacae',
 
-  light: 300,
+  thin: 300,
   regular: 400,
   bold: 700,
 
