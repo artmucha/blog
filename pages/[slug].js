@@ -221,17 +221,22 @@ const SinglePage = ({post}) => {
               </>
             ) : null }
 
-            <h4>W tej kategorii</h4>
-            <Grid s={1} m={2} l={1}>
-              {post.categories.edges[0].node.posts.edges.slice(0,4).map(({node}) => (
-                <PostCard
-                  key={node.slug}
-                  cover={node.featuredImage.node.sourceUrl}
-                  title={node.title}
-                  slug={node.slug}
-                />
-              ))}
-            </Grid>
+            {post.categories.edges.length ? ( 
+              <>
+                <h4>W tej kategorii</h4>
+                <Grid s={1} m={2} l={1}>
+                  {post.categories.edges[0].node.posts.edges.slice(0,4).map(({node}) => (
+                    <PostCard
+                      key={node.slug}
+                      title={node.title}
+                      slug={node.slug}
+                      excerpt={node.excerpt}
+                      cover={node.featuredImage.node.sourceUrl}
+                    />
+                  ))}
+                </Grid>
+              </>
+            ) : null }
           </Categories>
         </Content>
       </Article>
