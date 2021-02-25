@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import Badge from 'components/atoms/Badge';
+
 const CardWrapper = styled.article`
 	width: 100%;
 	background-color: ${({ theme }) => theme.white};
@@ -29,10 +31,20 @@ const CardCover = styled.div`
   display: block;
   width: 100%;
   height: 100%;
+  position: relative;
   img {
     transition: all .2s ease-in-out;
     object-fit: cover;
   }
+`;
+
+const Badges = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 0 10px 15px;
+  display: flex;
+  background-color: ${({ theme }) => theme.white};
 `;
 
 const CardTitle = styled.h3`
@@ -58,12 +70,21 @@ const CardExcerpt = styled.p`
   }
 `;
 
-const PostCard = ({cover, title, slug, excerpt}) => (
+const PostCard = ({cover, title, slug, excerpt, categories}) => (
   <CardWrapper>
     <Link href={slug}>
       <a title={title}>
         <CardCover>
           <Image src={cover} alt={title} layout="responsive" width="370" height="260" quality="80" />
+          <Badges>
+            { categories ? (
+              categories.edges.map(({node}) => (
+                <Link key={node.slug} href={node.slug}>
+                  <a title={node.name}><Badge>{node.name}</Badge></a>
+                </Link>
+              ))
+            ) : null }
+          </Badges>
         </CardCover>
         <CardTitle>{title}</CardTitle>
         <CardExcerpt>{excerpt}</CardExcerpt>

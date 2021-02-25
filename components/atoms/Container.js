@@ -10,7 +10,7 @@ const Container = styled.div`
   ${({ space }) =>
     space &&
     css`
-      padding-top: 15px;
+      padding-top: 40px;
     `}
 
   ${({ flex }) =>
@@ -52,12 +52,6 @@ const Container = styled.div`
     @media (min-width: 992px) {
       padding-left: 15px;
       padding-right: 15px;
-
-      ${({ space }) =>
-      space &&
-      css`
-        padding-top: 50px;
-      `}
     }
 `;
 

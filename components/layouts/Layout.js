@@ -74,7 +74,7 @@ const Footer = styled.footer`
   font-size: ${({ theme }) => theme.size.s};
   border-top: 1px solid ${({ theme }) => theme.grey200};
 
-  @media(min-width: 768px) {
+  @media(min-width: 992px) {
     text-align: left;
   }
 `;
@@ -102,7 +102,7 @@ const FooterMenu = styled.ul`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 992px) {
     text-align: left;
   }
 `;
@@ -160,7 +160,7 @@ const Layout = ({ children, title = "Geek's Corner"}) => {
 			
       <Container>
         <Footer>
-          <Grid s={1} m={3}>
+          <Grid s={1} l={3}>
             <FooterMenu>
               <p>Kategorie</p>
               { menu.map(item => <Link key={item.link} href={item.link}><a title={item.text}>{item.text}</a></Link>) }
