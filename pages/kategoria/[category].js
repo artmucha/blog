@@ -74,13 +74,26 @@ const CategoryPage = ({category}) => {
       </Hero>
       <Container space>
         <Grid s={1} m={2} l={3}>
-          { category.posts.edges.map(({node}) => (
+          { category.posts.edges.slice(0,6).map(({node}) => (
             <PostCard
               key={node.slug}
               title={node.title}
               slug={`/${node.slug}`}
               categories={node.categories}
               excerpt={node.excerpt}
+              cover={node.featuredImage.node.sourceUrl}
+            />
+          ))}
+        </Grid>
+      </Container>
+      <Container space>
+        <Grid s={2} m={3} l={4}>
+          { category.posts.edges.slice(7,19).map(({node}) => (
+            <PostCard
+              small
+              key={node.slug}
+              title={node.title}
+              slug={`/${node.slug}`}
               cover={node.featuredImage.node.sourceUrl}
             />
           ))}

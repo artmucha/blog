@@ -48,15 +48,28 @@ const Badges = styled.div`
 `;
 
 const CardTitle = styled.h3`
-	margin-top: 20px!important;
+	margin-top: 15px!important;
 	line-height: 115%;
   transition: all .2s ease-in-out;
+  font-size: ${({ theme, small }) => small ? theme.size.s : theme.size.l};
+
+  @media(min-width: 992px) {
+    margin-top: 20px!important;
+    font-size: ${({ theme, small }) => small ? theme.size.m : theme.size.l};
+  }
 `;
 
 const CardExcerpt = styled.p`
-  margin-top: 20px!important;
-  font-weight: ${({ theme }) => theme.thin}!important;
   position: relative;
+  line-height: 150%;
+  margin-top: 10px!important;
+  font-weight: ${({ theme }) => theme.thin}!important;
+  font-size: ${({ theme }) => theme.size.s}!important;
+
+  @media(min-width: 992px) {
+    margin-top: 20px!important;
+    font-size: ${({ theme }) => theme.size.m}!important;
+  }
 
   &:after {
     content: "";
@@ -70,24 +83,26 @@ const CardExcerpt = styled.p`
   }
 `;
 
-const PostCard = ({cover, title, slug, excerpt, categories}) => (
+const PostCard = ({cover, title, slug, excerpt, categories, small}) => (
   <CardWrapper>
     <Link href={slug}>
       <a title={title}>
         <CardCover>
           <Image src={cover} alt={title} layout="responsive" width="370" height="260" quality="80" />
-          <Badges>
+          
             { categories ? (
-              categories.edges.map(({node}) => (
+              <Badges>
+              { categories.edges.map(({node}) => (
                 <Link key={node.slug} href={node.slug}>
                   <a title={node.name}><Badge>{node.name}</Badge></a>
                 </Link>
-              ))
+              )) }
+              </Badges>
             ) : null }
-          </Badges>
+          
         </CardCover>
-        <CardTitle>{title}</CardTitle>
-        <CardExcerpt>{excerpt}</CardExcerpt>
+        <CardTitle small={small}>{title}</CardTitle>
+        { excerpt && <CardExcerpt>{excerpt}</CardExcerpt> }
       </a>
     </Link>
   </CardWrapper>
