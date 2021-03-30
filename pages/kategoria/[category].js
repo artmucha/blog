@@ -114,7 +114,7 @@ export async function getStaticPaths() {
 };
 
 export async function getStaticProps({params}) {
-    const data = await getPostsByCategory(params.category, 10)
+    const data = await getPostsByCategory(params.category)
     
     return {
       props: { category: data.category }
