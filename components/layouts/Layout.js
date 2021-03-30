@@ -6,15 +6,13 @@ import styled from 'styled-components';
 
 import Container from 'components/atoms/Container';
 import MainNavigation from 'components/molecules/MainNavigation';
-import SearchForm from 'components/molecules/SearchForm';
 import DataLoader from 'components/molecules/DataLoader';
+import Grid from 'components/atoms/Grid';
 
 import Logo from '../../public/logos/logo_geek_long_white.svg';
 import MenuIcon from '../../public/icons/menu-icon.svg';
-import SearchIcon from '../../public/icons/search-icon.svg';
 
 import menu from 'constans/menu';
-import Grid from 'components/atoms/Grid';
 
 const Header = styled.header`
   margin: 0 auto;
@@ -50,11 +48,6 @@ const MenuButton = styled(MenuIcon)`
   @media(min-width: 992px) {
     display: none;
   }
-`;
-
-const SearchButton = styled(SearchIcon)`
-  fill: ${({ theme }) => theme.white};
-  cursor: pointer;
 `;
 
 const NavigationWrapper = styled.div`
@@ -111,7 +104,6 @@ const FooterMenu = styled.ul`
 const Layout = ({ children, title = "Geek's Corner"}) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
 	
 	const startLoading = () => setLoading(true);
 	const stopLoading = () => setLoading(false);
@@ -150,9 +142,7 @@ const Layout = ({ children, title = "Geek's Corner"}) => {
           </Link>
           <NavigationWrapper>
             <MainNavigation open={open} setOpen={setOpen} />
-            <SearchButton onClick={() => setShowSearch(!showSearch)} />
           </NavigationWrapper>
-          <SearchForm showSearch={showSearch} setShowSearch={setShowSearch} />
         </Container>
 			</Header>
 
