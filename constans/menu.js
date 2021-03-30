@@ -1,26 +1,26 @@
 export default [
   {
     text: 'Gry',
-    link: 'kategoria/gry',
+    link: '/kategoria/gry',
   },
   {
     text: 'Konsole',
-    link: 'kategoria/konsole',
+    link: '/kategoria/konsole',
   },
   {
     text: 'Komputery',
-    link: 'kategoria/komputery',
+    link: '/kategoria/komputery',
   },
   {
     text: 'Mobile',
-    link: 'kategoria/mobile',
+    link: '/kategoria/mobile',
   },
   {
     text: 'Filmy / Seriale',
-    link: 'kategoria/film',
+    link: '/kategoria/film',
   },
   {
     text: 'Książki',
-    link: 'kategoria/ksiazki',
+    link: '/kategoria/ksiazki',
   },
 ];
