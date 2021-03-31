@@ -1,9 +1,13 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 
+import Container from 'components/atoms/Container';
 import Badge from 'components/atoms/Badge';
 
-const PageHaderWrapper = styled.div`
+const PageHeaderWrapper = styled.div``;
+
+const PageHeaderInner = styled.div`
   display: block;
 
   @media(min-width: 992px) {
@@ -34,7 +38,7 @@ const Article = styled.article`
 		}
 
 		h2 {
-			color: #fb8c00;
+			color: ${({theme}) => theme.grey300}
 		}
 	}
 
@@ -181,33 +185,145 @@ const Header = styled.header`
 	}
 `;
 
+const PageLatest = styled.article`
+  margin: 0 auto 40px 0;
+
+  h3 {
+    line-height: 28px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: ${({theme}) => theme.size.xl};
+  }
+
+  p {
+    line-height: 150%;
+    margin-top: 25px;
+    font-weight: ${({ theme }) => theme.thin};
+    font-size: ${({ theme }) => theme.size.s};
+
+    @media(min-width: 992px) {
+      margin-top: 20px;
+      font-size: ${({ theme }) => theme.size.m};
+    }
+  }
+
+  @media(min-width: 768px) {
+    margin: 0 auto 80px 0;
+    position: relative;
+
+    & > a > span {
+      width: 390px;
+      padding-right: 30px;
+      position: absolute;
+      top: -1px;
+      z-index: 1;
+      background-color: ${({theme}) => theme.white};
+    }
+    
+    h3 {
+      line-height: 36px;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    p {
+      margin-left: calc(20% - 20px)!important;
+    }
+
+    img {
+      margin-left: calc(20% - 20px)!important;
+    }
+  }
+
+  @media (min-width: 992px) {
+
+    & > a > span {
+      width: 490px;
+      padding-right: 68px;
+      padding-bottom: 40px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 0px;
+      font-size: 36px;
+      line-height: 42px;
+    }
+
+    p {
+      margin-left: 0px;
+      display: block;
+      padding-top: 0px;
+    }
+
+    img {
+      width: calc(75% - 20px)!important;
+    }
+  }
+`;
+
+const PageLatestHeader = styled.h2`
+  font-size: 54px;
+  line-height: 42px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: ${({theme}) => theme.grey200};
+
+  @media (min-width: 768px) {
+    font-size: 72px;
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 96px;
+  }
+`;
+
 const PageHader = ({posts}) => {
 	return (
-		<PageHaderWrapper>
-
-			{posts.slice(0,2).map(({node}) => (
-				<Link href={node.slug}>
-					<a title={node.title}>
-						<Article>
-							<CoverBackground>
-								<div>
-									<img src={node.featuredImage.node.sourceUrl} />
-								</div>
-							</CoverBackground>
-							<Content>
-								<Cover>
-									<img src={node.featuredImage.node.sourceUrl} alt={node.title} />
-								</Cover>
-								<Header>
-									{node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
-									<h2>{node.title}</h2>
-								</Header>
-							</Content>
-						</Article>
-					</a>
-				</Link>
-			))}
-		</PageHaderWrapper>
+    <PageHeaderWrapper>
+      <PageHeaderInner>
+        {posts.slice(0,2).map(({node}) => (
+          <Link href={node.slug}>
+            <a title={node.title}>
+              <Article>
+                <CoverBackground>
+                  <div>
+                    <img src={node.featuredImage.node.sourceUrl} />
+                  </div>
+                </CoverBackground>
+                <Content>
+                  <Cover>
+                    <img src={node.featuredImage.node.sourceUrl} alt={node.title} />
+                  </Cover>
+                  <Header>
+                    {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
+                    <h2>{node.title}</h2>
+                  </Header>
+                </Content>
+              </Article>
+            </a>
+          </Link>
+        ))}
+      </PageHeaderInner>
+      <Container>
+        <PageLatestHeader>Najnowsze</PageLatestHeader>
+        {posts.slice(2,3).map(({node}) => (
+          <PageLatest>
+            
+            <Link href={node.slug}>
+              <a title={node.title}>
+              <span>
+                {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
+                <h3>{node.title}</h3>
+              </span>
+              <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="640" height="360" quality="80" />
+              </a>
+            </Link>
+          </PageLatest>
+        ))}
+      </Container>
+    </PageHeaderWrapper>
 	)
 };
 
