@@ -52,11 +52,14 @@ const Navigation = styled.nav`
 			flex-direction: row;
 			a {
 				display: inline-block;
-				margin-right: 20px;
 				position: relative;
 				font-size:  ${({ theme }) => theme.size.s};
 				line-height:  ${({ theme }) => theme.size.xl};
 				color: ${({ theme }) => theme.white};
+
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
 
 				&:after {
 					content: '';

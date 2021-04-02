@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import Container from 'components/atoms/Container';
 import MainNavigation from 'components/molecules/MainNavigation';
 import DataLoader from 'components/molecules/DataLoader';
-import Grid from 'components/atoms/Grid';
 
-import Logo from '../../public/logos/logo_square.svg';
+import Logo from '../../public/logos/logo.svg';
+import LogoBlack from '../../public/logos/logo_black.svg';
 import MenuIcon from '../../public/icons/menu-icon.svg';
 
 import menu from 'constans/menu';
@@ -69,39 +69,54 @@ const Footer = styled.footer`
 
   @media(min-width: 992px) {
     text-align: left;
+    display: flex;
   }
 `;
 
-const FooterMenu = styled.ul`
+const FooterInfo = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-bottom: 20px;
 
-  p {
-    text-transform: uppercase;
-    margin-bottom: 5px;
+  p, span {
     line-height: 150%;
-    color: ${({ theme }) => theme.grey300};
+    color: ${({ theme }) => theme.black};
+  }
+
+  span {
+    text-transform: uppercase;
+  }
+
+  span, svg {
+    margin-bottom: 10px;
   }
 
   a {
     display: inline;
     line-height: 150%;
     transition: color .2s linear;
-    color: ${({ theme }) => theme.grey300};
+    color: ${({ theme }) => theme.black};
 
     &:hover {
-      color: ${({ theme }) => theme.black};
+      color: ${({ theme }) => theme.grey300};
     }
   }
 
   @media(min-width: 992px) {
+    max-width: 300px;
     text-align: left;
+    margin-bottom: 0;
+    align-items: flex-start;
+    
+    &:not(:last-child) {
+      margin-right: 80px;
+    }
   }
 `;
 
-
-const Layout = ({ children, title = "Nerdz Corner"}) => {
+const Layout = ({ children, title = "NerdzCorner"}) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 	
@@ -136,7 +151,7 @@ const Layout = ({ children, title = "Nerdz Corner"}) => {
         <Container flex spaceBetween alignCenter>
           <MenuButton onClick={() => setOpen(!open)} />
           <Link href="/">
-            <a titie="Nerdz Corner">
+            <a titie="NerdzCorner">
               <Logo />
             </a>
           </Link>
@@ -150,17 +165,18 @@ const Layout = ({ children, title = "Nerdz Corner"}) => {
 			
       <Container>
         <Footer>
-          <Grid s={1} l={3}>
-            <FooterMenu>
-              <p>Kategorie</p>
-              { menu.map(item => <Link key={item.link} href={item.link}><a title={item.text}>{item.text}</a></Link>) }
-            </FooterMenu>
-            <FooterMenu>
-              <p>Kontakt</p>
-              <a href="mailto:kontakt@blog.pl">kontakt@blog.pl</a>
-            </FooterMenu>
-            <div></div>
-          </Grid>
+          <FooterInfo>
+            <LogoBlack />
+            <p>NerdzCorner to portal technologiczny, na którym znajdziesz najciekawsze i najbardziej aktualne informacje ze świata gier, filmów, seriali, książek i nowych technologii.</p>
+          </FooterInfo>
+          <FooterInfo>
+            <span>Kategorie</span>
+            { menu.map(item => <Link key={item.link} href={item.link}><a title={item.text}>{item.text}</a></Link>) }
+          </FooterInfo>
+          <FooterInfo>
+            <span>Kontakt</span>
+            <a href="mailto:kontakt@blog.pl">kontakt@blog.pl</a>
+          </FooterInfo>
         </Footer>
       </Container>
     </>

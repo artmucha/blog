@@ -65,7 +65,7 @@ const CategoryPage = ({category}) => {
   };
 
   return (
-    <Layout title={`${category.name} | Geek's Corner`}>
+    <Layout title={`${category.name} | NerdzCorner`}>
       <Hero>
         <Image src={category.description} alt={category.name} layout="fill" quality="50" />
         <HeroConrainer flex alignCenter>

@@ -184,7 +184,7 @@ const SinglePage = ({post}) => {
   };
 
   return (
-    <Layout title={`${post.title} | Geek's Corner`}>
+    <Layout title={`${post.title} | NerdzCorner`}>
       <Article>
         <Hero>
           <Image src={post.featuredImage.node.sourceUrl} layout="fill" quality="50" />
