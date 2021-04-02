@@ -9,7 +9,7 @@ import MainNavigation from 'components/molecules/MainNavigation';
 import DataLoader from 'components/molecules/DataLoader';
 import Grid from 'components/atoms/Grid';
 
-import Logo from '../../public/logos/logo_geek_long_white.svg';
+import Logo from '../../public/logos/logo_square.svg';
 import MenuIcon from '../../public/icons/menu-icon.svg';
 
 import menu from 'constans/menu';
@@ -101,7 +101,7 @@ const FooterMenu = styled.ul`
 `;
 
 
-const Layout = ({ children, title = "Geek's Corner"}) => {
+const Layout = ({ children, title = "Nerdz Corner"}) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 	
@@ -136,7 +136,7 @@ const Layout = ({ children, title = "Geek's Corner"}) => {
         <Container flex spaceBetween alignCenter>
           <MenuButton onClick={() => setOpen(!open)} />
           <Link href="/">
-            <a titie="Geek's corner">
+            <a titie="Nerdz Corner">
               <Logo />
             </a>
           </Link>
