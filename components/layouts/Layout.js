@@ -167,7 +167,7 @@ const Layout = ({ children, title = "NerdzCorner"}) => {
         <Footer>
           <FooterInfo>
             <LogoBlack />
-            <p>NerdzCorner to portal technologiczny, na którym znajdziesz najciekawsze i najbardziej aktualne informacje ze świata gier, filmów, seriali, książek i nowych technologii.</p>
+            <p>NerdzCorner to blog technologiczny, na którym znajdziesz najciekawsze i najbardziej aktualne informacje ze świata gier, filmów, seriali, książek i nowych technologii.</p>
           </FooterInfo>
           <FooterInfo>
             <span>Kategorie</span>
@@ -175,7 +175,7 @@ const Layout = ({ children, title = "NerdzCorner"}) => {
           </FooterInfo>
           <FooterInfo>
             <span>Kontakt</span>
-            <a href="mailto:kontakt@blog.pl">kontakt@blog.pl</a>
+            <p>kontakt[at]nerdzcorner.pl</p>
           </FooterInfo>
         </Footer>
       </Container>

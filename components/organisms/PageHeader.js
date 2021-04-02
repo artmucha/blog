@@ -188,11 +188,13 @@ const Header = styled.header`
 const PageLatest = styled.article`
   margin: 0 auto 40px 0;
 
-  h3 {
+  h2 {
     line-height: 28px;
     margin-bottom: 20px;
     margin-top: 10px;
+    color: ${({theme}) => theme.black};
     font-size: ${({theme}) => theme.size.xl};
+    transition: color .2s linear;
   }
 
   p {
@@ -207,6 +209,20 @@ const PageLatest = styled.article`
     }
   }
 
+  img {
+    transition: transform .2s linear;
+  }
+
+  &:hover {
+		img {
+			transform: scale(1.05);
+		}
+
+		h2 {
+			color: ${({theme}) => theme.grey300}
+		}
+	}
+
   @media(min-width: 768px) {
     margin: 0 auto 80px 0;
     position: relative;
@@ -220,7 +236,7 @@ const PageLatest = styled.article`
       background-color: ${({theme}) => theme.white};
     }
     
-    h3 {
+    h2 {
       line-height: 36px;
       margin-top: 15px;
       margin-bottom: 25px;
@@ -243,7 +259,7 @@ const PageLatest = styled.article`
       padding-bottom: 40px;
     }
 
-    h3 {
+    h2 {
       margin-top: 20px;
       margin-bottom: 0px;
       font-size: 36px;
@@ -262,7 +278,7 @@ const PageLatest = styled.article`
   }
 `;
 
-const PageLatestHeader = styled.h2`
+const PageLatestHeader = styled.h3`
   font-size: 54px;
   line-height: 42px;
   margin-top: 40px;
@@ -315,9 +331,10 @@ const PageHader = ({posts}) => {
               <a title={node.title}>
               <span>
                 {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
-                <h3>{node.title}</h3>
+                <h2>{node.title}</h2>
               </span>
               <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="640" height="360" quality="80" />
+              <p>{node.excerpt}</p>
               </a>
             </Link>
           </PageLatest>
