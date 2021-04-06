@@ -84,13 +84,6 @@ const Content = styled(Container)`
 
   h2, h3 {
     margin-top: 15px;
-  }
-
-  h2 {
-    font-size: ${({ theme }) => theme.size.xl};
-  }
-
-  h3 {
     font-size: ${({ theme }) => theme.size.l};
   }
 

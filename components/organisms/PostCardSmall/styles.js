@@ -16,7 +16,7 @@ export const CardWrapper = styled.article`
     img {
       transform: scale(1.1);
     }
-    h3 {
+    h2 {
       color: ${({ theme }) => theme.grey300};
     }
   }
@@ -39,7 +39,7 @@ export const CardCover = styled.div`
   }
 `;
 
-export const CardTitle = styled.h3`
+export const CardTitle = styled.h2`
   transition: all .2s ease-in-out;
   margin-top: 0!important;
   font-size: ${({ theme }) => theme.size.m}!important;

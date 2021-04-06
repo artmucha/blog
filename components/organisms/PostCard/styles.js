@@ -17,7 +17,7 @@ export const CardWrapper = styled.article`
     img {
       transform: scale(1.1);
     }
-    h3 {
+    h2 {
       color: ${({ theme }) => theme.grey300};
     }
   }
@@ -43,7 +43,7 @@ export const Badges = styled.div`
   background-color: ${({ theme }) => theme.white};
 `;
 
-export const CardTitle = styled.h3`
+export const CardTitle = styled.h2`
 	margin-top: 15px!important;
 	line-height: 115%;
   transition: all .2s ease-in-out;
