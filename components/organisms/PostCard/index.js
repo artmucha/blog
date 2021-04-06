@@ -14,7 +14,7 @@ const PostCard = ({cover, title, slug, excerpt, categories, small}) => (
             { categories ? (
               <Badges>
               { categories.edges.map(({node}) => (
-                <Link key={node.slug} href={node.slug}>
+                <Link key={node.slug} href={`/kategoria/${node.slug}`}>
                   <a title={node.name}><Badge>{node.name}</Badge></a>
                 </Link>
               )) }

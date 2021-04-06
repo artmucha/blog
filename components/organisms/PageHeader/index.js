@@ -22,7 +22,7 @@ const PageHader = ({posts}) => (
                   <img src={node.featuredImage.node.sourceUrl} alt={node.title} />
                 </Cover>
                 <Header>
-                  {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
+                  {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={`/kategoria/${node.slug}`}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
                   <h2>{node.title}</h2>
                 </Header>
               </Content>
@@ -39,7 +39,7 @@ const PageHader = ({posts}) => (
           <Link href={node.slug}>
             <a title={node.title}>
             <span>
-              {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
+              {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={`/kategoria/${node.slug}`}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
               <h2>{node.title}</h2>
             </span>
             <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="640" height="360" quality="80" />
