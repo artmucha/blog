@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import Link from 'next/link';
-import Image from 'next/image';
 
-const CardWrapper = styled.article`
+export const CardWrapper = styled.article`
   background-color: ${({ theme }) => theme.white};
 
   a {
@@ -24,7 +22,7 @@ const CardWrapper = styled.article`
   }
 `;
 
-const CardCover = styled.div`
+export const CardCover = styled.div`
   display: block;
   min-width: 105px;
   max-width: 175px;
@@ -41,24 +39,9 @@ const CardCover = styled.div`
   }
 `;
 
-const CardTitle = styled.h3`
+export const CardTitle = styled.h3`
   transition: all .2s ease-in-out;
   margin-top: 0!important;
   font-size: ${({ theme }) => theme.size.m}!important;
   font-size: ${({ theme }) => theme.black}!important;
 `;
-
-const PostCardSmall = ({cover, title, slug}) => (
-  <CardWrapper>
-    <Link href={slug}>
-      <a title={title}>
-        <CardCover>
-          <Image src={cover} alt={title} layout="responsive" width="200" height="120" quality="75" />
-        </CardCover>
-        <CardTitle>{title}</CardTitle>
-      </a>
-    </Link>
-  </CardWrapper>
-);
-
-export default PostCardSmall;

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
-import Link from 'next/link';
-import Image from 'next/image';
 
-import Badge from 'components/atoms/Badge';
-
-const CardWrapper = styled.article`
+export const CardWrapper = styled.article`
 	width: 100%;
 	background-color: ${({ theme }) => theme.white};
   overflow: hidden;
@@ -27,7 +23,7 @@ const CardWrapper = styled.article`
   }
 `;
 
-const CardCover = styled.div`
+export const CardCover = styled.div`
   display: block;
   width: 100%;
   height: 100%;
@@ -38,7 +34,7 @@ const CardCover = styled.div`
   }
 `;
 
-const Badges = styled.div`
+export const Badges = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -47,7 +43,7 @@ const Badges = styled.div`
   background-color: ${({ theme }) => theme.white};
 `;
 
-const CardTitle = styled.h3`
+export const CardTitle = styled.h3`
 	margin-top: 15px!important;
 	line-height: 115%;
   transition: all .2s ease-in-out;
@@ -59,7 +55,7 @@ const CardTitle = styled.h3`
   }
 `;
 
-const CardExcerpt = styled.p`
+export const CardExcerpt = styled.p`
   position: relative;
   line-height: 150%;
   margin-top: 10px!important;
@@ -82,30 +78,3 @@ const CardExcerpt = styled.p`
     background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
   }
 `;
-
-const PostCard = ({cover, title, slug, excerpt, categories, small}) => (
-  <CardWrapper>
-    <Link href={slug}>
-      <a title={title}>
-        <CardCover>
-          <Image src={cover} alt={title} layout="responsive" width="370" height="260" quality="80" />
-          
-            { categories ? (
-              <Badges>
-              { categories.edges.map(({node}) => (
-                <Link key={node.slug} href={node.slug}>
-                  <a title={node.name}><Badge>{node.name}</Badge></a>
-                </Link>
-              )) }
-              </Badges>
-            ) : null }
-          
-        </CardCover>
-        <CardTitle small={small}>{title}</CardTitle>
-        { excerpt && <CardExcerpt>{excerpt}</CardExcerpt> }
-      </a>
-    </Link>
-  </CardWrapper>
-);
-
-export default PostCard;

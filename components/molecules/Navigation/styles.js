@@ -1,10 +1,6 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
-import menu from 'constans/menu';
-import CloseIcon from '../../public/icons/close-icon.svg';
-
-const Navigation = styled.nav`
+export const Navigation = styled.nav`
 	display: flex;
   flex-direction: column;
 	padding: 15px;
@@ -21,19 +17,6 @@ const Navigation = styled.nav`
 	svg {
 		align-self: flex-end;
 		fill: ${({ theme }) => theme.black};
-	}
-
-	ul {
-		margin-top: 48px;
-		a {
-			display: block;
-			font-size:  ${({ theme }) => theme.size.m};
-			line-height: 48px;
-			font-weight: ${({ theme }) => theme.bold};
-			text-align: center;
-			text-transform: uppercase;
-			color: ${({ theme }) => theme.black};
-		}
 	}
 
 	@media(min-width: 992px) {
@@ -85,22 +68,51 @@ const Navigation = styled.nav`
 	}
 `;
 
-const MainNavigation = ({open, setOpen}) => {
-	
-	return (
-		<Navigation open={open}>
-			<CloseIcon onClick={() => setOpen(false)} />
-			<ul>
-				{ menu.map(item => (
-          !item.extra &&
-          <Link key={item.link} href={item.link}>
-            <a title={item.text}>{item.text}</a>
-          </Link>
-          )
-        )}
-			</ul>
-		</Navigation>		
-	)
-};
+export const NavigationList = styled.ul`
+  margin-top: 48px;
+  a {
+    display: block;
+    font-size:  ${({ theme }) => theme.size.m};
+    line-height: 48px;
+    font-weight: ${({ theme }) => theme.bold};
+    text-align: center;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.black};
+  }
 
-export default MainNavigation;
+  @media(min-width: 992px) {
+    margin: 0;
+    flex-direction: row;
+    a {
+      display: inline-block;
+      position: relative;
+      font-size:  ${({ theme }) => theme.size.s};
+      line-height:  ${({ theme }) => theme.size.xl};
+      color: ${({ theme }) => theme.white};
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 0;
+        height: 3px;
+        background-color: ${({ theme }) => theme.white};
+        transform: translate3d(0,0,0);
+        transition: width .2s ease;
+      }
+
+      &:hover {
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+`;

@@ -1,4 +1,4 @@
-import styled, { keyframes  } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const loading = keyframes`
   0% {
@@ -13,7 +13,7 @@ const loading = keyframes`
   }
 `;
 
-const PageOverlay = styled.div`
+export const PageOverlay = styled.div`
   display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,7 +28,7 @@ const PageOverlay = styled.div`
 	z-index: 9999;
 `;
 
-const Loader = styled.div`
+export const Loader = styled.div`
 	display: inline-block;
   position: relative;
   width: 80px;
@@ -58,15 +58,3 @@ const Loader = styled.div`
 		}
 	}
 `;
-
-const DataLoader = () => (
-	<PageOverlay>
-		<Loader>
-			<div></div>
-			<div></div>
-			<div></div>
-		</Loader>
-	</PageOverlay>
-);
-
-export default DataLoader;

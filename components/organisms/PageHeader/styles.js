@@ -1,13 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import styled from 'styled-components';
 
-import Container from 'components/atoms/Container';
-import Badge from 'components/atoms/Badge';
+export const PageHeaderWrapper = styled.div``;
 
-const PageHeaderWrapper = styled.div``;
-
-const PageHeaderInner = styled.div`
+export const PageHeaderInner = styled.div`
   display: block;
 
   @media(min-width: 992px) {
@@ -28,7 +23,7 @@ const PageHeaderInner = styled.div`
   }
 `;
 
-const Article = styled.article`
+export const Article = styled.article`
 	width: 100%;
 	position: relative;
 
@@ -65,7 +60,7 @@ const Article = styled.article`
 	}
 `;
 
-const CoverBackground = styled.div`
+export const CoverBackground = styled.div`
 	display: none;
 
 	@media (min-width: 768px) {
@@ -108,7 +103,7 @@ const CoverBackground = styled.div`
 
 `;
 
-const Cover = styled.div`
+export const Cover = styled.div`
 	width: 100%;
 	height: 310px;
 	position: relative;
@@ -141,7 +136,7 @@ const Cover = styled.div`
 	}
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
 	@media (min-width: 992px) {
 		width: 100%;
 		max-width: 683px;
@@ -149,7 +144,7 @@ const Content = styled.div`
 	}
 `;
 
-const Header = styled.header`
+export const Header = styled.header`
 	width: calc(100% - 20px);
 	margin: 0px auto;
 	padding: 15px 20px 0px;
@@ -185,7 +180,7 @@ const Header = styled.header`
 	}
 `;
 
-const PageLatest = styled.article`
+export const PageLatest = styled.article`
   margin: 0 auto 40px 0;
 
   h2 {
@@ -278,7 +273,7 @@ const PageLatest = styled.article`
   }
 `;
 
-const PageLatestHeader = styled.h3`
+export const PageLatestHeader = styled.h3`
   font-size: 54px;
   line-height: 42px;
   margin-top: 40px;
@@ -294,54 +289,3 @@ const PageLatestHeader = styled.h3`
     font-size: 96px;
   }
 `;
-
-const PageHader = ({posts}) => {
-	return (
-    <PageHeaderWrapper>
-      <PageHeaderInner>
-        {posts.slice(0,2).map(({node}) => (
-          <Link href={node.slug}>
-            <a title={node.title}>
-              <Article>
-                <CoverBackground>
-                  <div>
-                    <img src={node.featuredImage.node.sourceUrl} />
-                  </div>
-                </CoverBackground>
-                <Content>
-                  <Cover>
-                    <img src={node.featuredImage.node.sourceUrl} alt={node.title} />
-                  </Cover>
-                  <Header>
-                    {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
-                    <h2>{node.title}</h2>
-                  </Header>
-                </Content>
-              </Article>
-            </a>
-          </Link>
-        ))}
-      </PageHeaderInner>
-      <Container>
-        <PageLatestHeader>Najnowsze</PageLatestHeader>
-        {posts.slice(2,3).map(({node}) => (
-          <PageLatest>
-            
-            <Link href={node.slug}>
-              <a title={node.title}>
-              <span>
-                {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={node.slug}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
-                <h2>{node.title}</h2>
-              </span>
-              <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="640" height="360" quality="80" />
-              <p>{node.excerpt}</p>
-              </a>
-            </Link>
-          </PageLatest>
-        ))}
-      </Container>
-    </PageHeaderWrapper>
-	)
-};
-
-export default PageHader;
