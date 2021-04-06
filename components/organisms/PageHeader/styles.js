@@ -105,7 +105,6 @@ export const CoverBackground = styled.div`
 
 export const Cover = styled.div`
 	width: 100%;
-	height: 310px;
 	position: relative;
 	overflow: hidden;
 	
@@ -161,6 +160,16 @@ export const Header = styled.header`
 		font-size: ${({ theme }) => theme.size.xl};
 		color: ${({ theme }) => theme.black};
 	}
+
+  p {
+    line-height: 150%;
+    font-weight: ${({ theme }) => theme.thin};
+    font-size: ${({ theme }) => theme.size.s};
+
+    @media(min-width: 992px) {
+      font-size: ${({ theme }) => theme.size.m};
+    }
+  }
 
 	@media(min-width: 768px) {
 		top: -100px;

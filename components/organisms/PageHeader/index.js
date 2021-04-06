@@ -14,16 +14,17 @@ const PageHader = ({posts}) => (
             <Article>
               <CoverBackground>
                 <div>
-                  <img src={node.featuredImage.node.sourceUrl} />
+                  <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="960" height="540" quality="40" />
                 </div>
               </CoverBackground>
               <Content>
                 <Cover>
-                  <img src={node.featuredImage.node.sourceUrl} alt={node.title} />
+                  <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="960" height="800" quality="80" />
                 </Cover>
                 <Header>
                   {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={`/kategoria/${node.slug}`}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
                   <h2>{node.title}</h2>
+                  <p>{node.excerpt}</p>
                 </Header>
               </Content>
             </Article>
@@ -43,7 +44,6 @@ const PageHader = ({posts}) => (
               <h2>{node.title}</h2>
             </span>
             <Image src={node.featuredImage.node.sourceUrl} alt={node.title} layout="responsive" width="640" height="360" quality="80" />
-            <p>{node.excerpt}</p>
             </a>
           </Link>
         </PageLatest>
