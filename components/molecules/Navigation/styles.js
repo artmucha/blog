@@ -29,42 +29,6 @@ export const Navigation = styled.nav`
 		svg {
 			display: none;
 		}
-
-		ul {
-			margin: 0;
-			flex-direction: row;
-			a {
-				display: inline-block;
-				position: relative;
-				font-size:  ${({ theme }) => theme.size.s};
-				line-height:  ${({ theme }) => theme.size.xl};
-				color: ${({ theme }) => theme.white};
-
-        &:not(:last-child) {
-          margin-right: 20px;
-        }
-
-				&:after {
-					content: '';
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					right: 0;
-					margin: 0 auto;
-					width: 0;
-					height: 3px;
-					background-color: ${({ theme }) => theme.white};
-					transform: translate3d(0,0,0);
-					transition: width .2s ease;
-				}
-
-				&:hover {
-					&:after {
-						width: 100%;
-					}
-				}
-			}
-		}
 	}
 `;
 

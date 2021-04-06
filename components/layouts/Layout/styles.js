@@ -11,13 +11,6 @@ export const Header = styled.header`
   text-shadow: rgba(0,0,0,.01) 0 0 1px;
   z-index: 99;
 
-  a {
-    color: ${({ theme }) => theme.white};
-    font-size: ${({ theme }) => theme.size.xl};
-    font-weight: ${({ theme }) => theme.bold};
-    line-height: ${({ theme }) => theme.size.xxl};
-  }
-
   @media(min-width: 768px) {
     padding: 60px 0 15px 0;
   }

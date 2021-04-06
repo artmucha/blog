@@ -35,9 +35,9 @@ const PageHader = ({posts}) => (
     <Container>
       <PageLatestHeader>Najnowsze</PageLatestHeader>
       {posts.slice(2,3).map(({node}) => (
-        <PageLatest>
+        <PageLatest key={node.slug}>
           
-          <Link key={node.slug} href={node.slug}>
+          <Link href={node.slug}>
             <a title={node.title}>
             <span>
               {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={`/kategoria/${node.slug}`}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
