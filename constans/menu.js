@@ -20,7 +20,12 @@ export default [
     link: '/kategoria/film',
   },
   {
+    text: 'Startupy',
+    link: '/kategoria/startupy',
+  },
+  {
     text: 'Książki',
     link: '/kategoria/ksiazki',
+    extra: true,
   },
 ];

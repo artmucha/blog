@@ -91,7 +91,13 @@ const MainNavigation = ({open, setOpen}) => {
 		<Navigation open={open}>
 			<CloseIcon onClick={() => setOpen(false)} />
 			<ul>
-				{ menu.map(item => <Link key={item.link} href={item.link}><a title={item.text}>{item.text}</a></Link>) }
+				{ menu.map(item => (
+          !item.extra &&
+          <Link key={item.link} href={item.link}>
+            <a title={item.text}>{item.text}</a>
+          </Link>
+          )
+        )}
 			</ul>
 		</Navigation>		
 	)
