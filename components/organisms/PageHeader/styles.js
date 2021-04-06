@@ -213,15 +213,7 @@ export const PageLatest = styled.article`
     }
   }
 
-  img {
-    transition: transform .2s linear;
-  }
-
   &:hover {
-		img {
-			transform: scale(1.05);
-		}
-
 		h2 {
 			color: ${({theme}) => theme.grey300}
 		}
