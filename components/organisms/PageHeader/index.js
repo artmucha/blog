@@ -9,7 +9,7 @@ const PageHader = ({posts}) => (
   <PageHeaderWrapper>
     <PageHeaderInner>
       {posts.slice(0,2).map(({node}) => (
-        <Link href={node.slug}>
+        <Link key={node.slug} href={node.slug}>
           <a title={node.title}>
             <Article>
               <CoverBackground>
@@ -37,7 +37,7 @@ const PageHader = ({posts}) => (
       {posts.slice(2,3).map(({node}) => (
         <PageLatest>
           
-          <Link href={node.slug}>
+          <Link key={node.slug} href={node.slug}>
             <a title={node.title}>
             <span>
               {node.categories.edges.map(({node}) => <Link key={node.categoryId} href={`/kategoria/${node.slug}`}><a title={node.name}><Badge>{node.name}</Badge></a></Link>)}
