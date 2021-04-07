@@ -4,6 +4,15 @@ export const theme = {
   grey100: '#f5f5f5',
   grey200: '#d7e1e2',
   grey300: '#9cacae',
+  
+  gry: '#FFCA29, #fb8c00',
+  konsole: '#13f1fc, #0470dc',
+  komputery: '#CE9FFC, #7367F0',
+  mobile: '#f02fc2, #6094ea',
+  internet: '#17ead9, #6078ea',
+  startupy: '#b1ea4d, #459522',
+  filmy: '#F5515F, #A1051D',
+  ksiazki: '#fcdf8a, #f38381',
 
   thin: 300,
   regular: 400,

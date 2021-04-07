@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Layout from 'components/layouts/Layout';
 import Container from 'components/atoms/Container';
@@ -15,24 +14,13 @@ const Hero = styled.header`
   height: 310px;
 	position: relative;
 	overflow: hidden;
-	
-	&:before {
-		content: "";
-		background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.4) 1%, rgba(0, 0, 0, 0) 46%);
-		z-index: 1;
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0px;
-		left: 0px;
-	}
+  opacity: .8;
 
-	img {
-		object-fit: cover;
-    transform: scale(1.1);
-    filter: blur(12px);
-    z-index: -1;
-	}
+  ${({ color }) =>
+    color &&
+    css`
+      background: linear-gradient(to bottom right, ${({ theme }) => theme[color]});
+  `}
 
   @media(min-width: 768px) {
     height: 400px;
@@ -66,34 +54,20 @@ const CategoryPage = ({category}) => {
 
   return (
     <Layout title={`${category.name} | NerdzCorner`}>
-      <Hero>
-        <Image src={category.description} alt={category.name} layout="fill" quality="50" />
+      <Hero color={category.slug}>
         <HeroConrainer flex alignCenter>
           <CategoryName>{category.name}</CategoryName>
         </HeroConrainer>
       </Hero>
       <Container space>
         <Grid s={1} m={2} l={3}>
-          { category.posts.edges.slice(0,6).map(({node}) => (
+          { category.posts.edges.map(({node}) => (
             <PostCard
               key={node.slug}
               title={node.title}
               slug={`/${node.slug}`}
               categories={node.categories}
               excerpt={node.excerpt}
-              cover={node.featuredImage.node.sourceUrl}
-            />
-          ))}
-        </Grid>
-      </Container>
-      <Container space>
-        <Grid s={2} m={3} l={4}>
-          { category.posts.edges.slice(7,19).map(({node}) => (
-            <PostCard
-              small
-              key={node.slug}
-              title={node.title}
-              slug={`/${node.slug}`}
               cover={node.featuredImage.node.sourceUrl}
             />
           ))}

@@ -16,12 +16,18 @@ export default [
     link: '/kategoria/mobile',
   },
   {
-    text: 'Filmy / Seriale',
-    link: '/kategoria/film',
+    text: 'Internet',
+    link: '/kategoria/internet',
   },
   {
     text: 'Startupy',
     link: '/kategoria/startupy',
+    extra: true,
+  },
+  {
+    text: 'Filmy / Seriale',
+    link: '/kategoria/filmy',
+    extra: true,
   },
   {
     text: 'Książki',
