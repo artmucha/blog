@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Container from 'components/atoms/Container';
 import MainNavigation from 'components/molecules/Navigation';
 import DataLoader from 'components/molecules/DataLoader';
+import Checker from 'components/molecules/Checker';
 import { Header, MenuButton, NavigationWrapper, Footer, FooterInfo, FooterHeader, FooterLink, FooterCopyrights } from 'components/layouts/Layout/styles';
 
 import Logo from '../../../public/logos/logo.svg';
@@ -54,6 +55,7 @@ const Layout = ({ children, title = "NerdzCorner"}) => {
           </Link>
           <NavigationWrapper>
             <MainNavigation open={open} setOpen={setOpen} />
+            <Checker />
           </NavigationWrapper>
         </Container>
 			</Header>
